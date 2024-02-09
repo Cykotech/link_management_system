@@ -23,12 +23,5 @@ main {
   display: flex;
   justify-content: space-between;
 
-  .linkContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 80%;
-    height: 60rem;
-    padding-inline: 2rem;
-  }
+
 }
