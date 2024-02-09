@@ -1,0 +1,34 @@
+html,
+body {
+  height: 100%;
+}
+
+header {
+  height: 5rem;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 2px black;
+  padding-inline: 1.5rem;
+  background-color: white;
+
+  svg {
+    font-size: 3rem;
+  }
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+
+  .linkContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 80%;
+    height: 60rem;
+    padding-inline: 2rem;
+  }
+}
