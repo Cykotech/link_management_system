@@ -1,6 +1,8 @@
 html,
 body {
   height: 100%;
+  background-image: url("./assets/Images/background.webp");
+  background-size: cover;
 }
 
 header {
@@ -12,7 +14,7 @@ header {
   align-items: center;
   border-bottom: solid 2px black;
   padding-inline: 1.5rem;
-  background-color: white;
+  background-color: hsla(152, 73%, 60%, 0.5);
 
   svg {
     font-size: 3rem;
@@ -22,6 +24,4 @@ header {
 main {
   display: flex;
   justify-content: space-between;
-
-
 }

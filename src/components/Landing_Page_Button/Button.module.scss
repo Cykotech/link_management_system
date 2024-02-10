@@ -2,7 +2,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: hsla(152, 73%, 60%, 0.5);
   border: 2px solid black;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+
+  a {
+    width: 100%;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    h2 {
+      text-align: center;
+    }
+  }
 }
