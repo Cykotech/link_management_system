@@ -1,5 +1,5 @@
 export function ArmorTracker() {
   return (
-    <h2>ArmorTracker</h2>
+    <h2>Armor Tracker</h2>
   )
 }
