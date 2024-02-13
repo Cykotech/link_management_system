@@ -1,8 +1,13 @@
 html,
 body {
   height: 100%;
-  background-image: url("./assets/Images/background.webp");
-  background-size: cover;
+}
+
+img.background {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -1;
 }
 
 header {

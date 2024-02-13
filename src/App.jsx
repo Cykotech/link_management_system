@@ -11,10 +11,12 @@ import { Sidebar } from "./components/Sidebar/Sidebar";
 import { HiOutlineMenu } from "react-icons/hi";
 
 import "./App.scss";
+import background from "./assets/Images/background.webp";
 
 function App() {
   return (
     <>
+      <img className="background" src={background}/>
       <header>
         <Link to="/">
           <h1>Link Management System</h1>
