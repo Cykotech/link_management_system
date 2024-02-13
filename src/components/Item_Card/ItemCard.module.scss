@@ -1,0 +1,11 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: hsla(152, 73%, 60%, 0.5);
+
+  h3 {
+    font-size: 2rem;
+  }
+}
