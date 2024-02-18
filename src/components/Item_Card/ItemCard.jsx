@@ -6,7 +6,7 @@ export function ItemCard({ children, imgSrc }) {
     <div className={classes.card}>
       <img src={imgSrc}></img>
       <h3>{children}</h3>
-      <input type="text"></input>
+      <input type="number" min="0" max="999"></input>
     </div>
   );
 }
