@@ -17,7 +17,15 @@ export async function mapInventory() {
 }
 
 export function changeMaterialQuantity(item, quantity) {
-  useInventoryStore.setState((prev) => ({
-    inventory: new Map(prev.inventory).set(item, quantity),
-  }));
+  if (quantity <= 999) {
+    useInventoryStore.setState((prev) => ({
+      inventory: new Map(prev.inventory).set(item, quantity),
+    }));
+  } else {
+    useInventoryStore.setState((prev) => ({
+      inventory: new Map(prev.inventory).set(item, 999),
+    }));
+  }
+
+  console.log(`Stored ${quantity} ${item}`)
 }

@@ -21,12 +21,15 @@ function App() {
   const [materials, setMaterials] = useState([]);
 
   useEffect(() => {
-    console.log("Function running...");
+    console.log("Loading inventory...");
+
     getMaterials()
       .then((res) => {
         setMaterials(res);
       })
       .then(mapInventory());
+      
+      console.log("Inventory loaded");
   }, []);
 
   return (
