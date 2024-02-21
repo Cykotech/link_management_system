@@ -14,7 +14,7 @@ export function ItemCard({ children, imgSrc, quantity, handleChange }) {
         max="999"
         value={quantity ?? 0}
         onChange={(event) => {
-          handleChange(children, event.target.value);
+          handleChange(children, Number(event.target.value));
         }}></input>
     </div>
   );

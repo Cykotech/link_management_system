@@ -6,12 +6,9 @@ export const useInventoryStore = create(() => ({ inventory: new Map() }));
 
 export async function mapInventory() {
   const materials = await getMaterials();
-  useInventoryStore.setState((prev) => ({
-    inventory: new Map(prev.inventory),
-  }));
   materials.forEach((material) => {
     useInventoryStore.setState((prev) => ({
-      inventory: new Map(prev.inventory).set(material.name, 0),
+      inventory: prev.inventory.set(material.name, 0),
     }));
   });
 }
@@ -27,5 +24,5 @@ export function changeMaterialQuantity(item, quantity) {
     }));
   }
 
-  console.log(`Stored ${quantity} ${item}`)
+  console.log(`Stored ${quantity} ${item}`);
 }
