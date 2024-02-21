@@ -1,4 +1,7 @@
+// import { useEffect } from "react";
 import { Link, Routes, Route } from "react-router-dom";
+
+// import { mapInventory } from "./store/inventoryStore";
 
 import { LandingPage } from "./pages/Landing_Page/LandingPage";
 import { InventoryManager } from "./pages/Inventory_Manager/InventoryManager";
@@ -16,7 +19,10 @@ import background from "./assets/Images/background.webp";
 function App() {
   return (
     <>
-      <img className="background" src={background}/>
+      <img
+        className="background"
+        src={background}
+      />
       <header>
         <Link to="/">
           <h1>Link Management System</h1>
