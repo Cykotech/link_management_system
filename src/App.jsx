@@ -1,7 +1,8 @@
-// import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, Routes, Route } from "react-router-dom";
 
-// import { mapInventory } from "./store/inventoryStore";
+import { mapInventory } from "./store/inventoryStore";
+import { getMaterials } from "./util/getMaterials";
 
 import { LandingPage } from "./pages/Landing_Page/LandingPage";
 import { InventoryManager } from "./pages/Inventory_Manager/InventoryManager";
@@ -17,6 +18,17 @@ import "./App.scss";
 import background from "./assets/Images/background.webp";
 
 function App() {
+  const [materials, setMaterials] = useState([]);
+
+  useEffect(() => {
+    console.log("Function running...");
+    getMaterials()
+      .then((res) => {
+        setMaterials(res);
+      })
+      .then(mapInventory());
+  }, []);
+
   return (
     <>
       <img
@@ -37,7 +49,7 @@ function App() {
           />
           <Route
             path="/inventory"
-            element={<InventoryManager />}
+            element={<InventoryManager materials={materials} />}
           />
           <Route
             path="/armor"

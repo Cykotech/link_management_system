@@ -1,26 +1,14 @@
-import { useEffect, useState } from "react";
 import {
   useInventoryStore,
-  changeMaterialQuantity,
-  mapInventory,
+  changeMaterialQuantity
 } from "../../store/inventoryStore";
 
 import { ItemCard } from "../../components/Item_Card/ItemCard";
-import { getMaterials } from "../../util/getMaterials";
 
 import classes from "./Inventory.module.scss";
 
-export function InventoryManager() {
-  const [materials, setMaterials] = useState([]);
+export function InventoryManager({ materials }) {
   const inventory = useInventoryStore((state) => state.inventory);
-
-  useEffect(() => {
-    getMaterials()
-      .then((res) => {
-        setMaterials(res);
-      })
-      .then(mapInventory());
-  }, []);
 
   return (
     <div className={classes.container}>
