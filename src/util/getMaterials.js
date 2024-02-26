@@ -1,11 +1,13 @@
 export async function getMaterials() {
   try {
     const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbyhhom9KprzV3okaHvSp4It0RPRRJsCZWL-FhqRYJyhYxLxZzMjPKI8kjtDkUpIeGU/exec"
+      "https://script.google.com/macros/s/AKfycbxKP-yGhf7s9zWImE2dmc9hUA9k3i5SVV0vf-kiqlT6JBXAH26pBaZDRbxyDhkpOZU/exec?type=materials"
     );
     const json = await response.json();
-    return json.data;
+    return json;
   } catch (err) {
     console.log(err);
   }
 }
+
+getMaterials();
