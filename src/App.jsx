@@ -3,6 +3,7 @@ import { Link, Routes, Route } from "react-router-dom";
 
 import { mapInventory } from "./store/inventoryStore";
 import { getMaterials } from "./util/getMaterials";
+import { getArmor } from "./util/getArmor";
 
 import { LandingPage } from "./pages/Landing_Page/LandingPage";
 import { InventoryManager } from "./pages/Inventory_Manager/InventoryManager";
@@ -19,17 +20,25 @@ import background from "./assets/Images/background.webp";
 
 function App() {
   const [materials, setMaterials] = useState([]);
+  const [armors, setArmors] = useState([]);
 
   useEffect(() => {
     console.log("Loading inventory...");
+    console.log("Loading armors...");
 
     getMaterials()
       .then((res) => {
         setMaterials(res);
       })
       .then(mapInventory());
-      
-      console.log("Inventory loaded");
+
+    console.log("Inventory loaded");
+
+    getArmor().then((res) => {
+      setArmors(res);
+    });
+
+    console.log("Armors loaded");
   }, []);
 
   return (
@@ -56,7 +65,7 @@ function App() {
           />
           <Route
             path="/armor"
-            element={<ArmorTracker />}
+            element={<ArmorTracker armors={armors} materials={materials}/>}
           />
           <Route
             path="/cookbook"
