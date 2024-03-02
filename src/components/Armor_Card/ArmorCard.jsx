@@ -19,11 +19,13 @@ export function ArmorCard({ children, imgSrc, upgrades, materials }) {
         <button onClick={() => SetCurrentLevel(4)}>4</button>
       </div>
       {upgrades[currentLevel].map((upgrade) => {
-        const materialIndex = materials.indexOf();
+        const materialIndex = materials.findIndex(material => material.name === upgrade.name);
+        console.log(materials[materialIndex]);
         return (
           <div className={classes.materialContainer}>
-            <div>{materials[materialIndex].imgSrc}</div>
-            <div>{upgrade.quantity}</div>
+            <img src={materials[materialIndex].imgSrc}></img>
+            <p>{materials[materialIndex].imgSrc}</p>
+            <p>{upgrade.quantity}</p>
           </div>
         );
       })}
