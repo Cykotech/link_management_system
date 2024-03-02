@@ -21,13 +21,15 @@ export function ArmorCard({ children, imgSrc, upgrades, materials }) {
       {upgrades[currentLevel].map((upgrade) => {
         const materialIndex = materials.findIndex(material => material.name === upgrade.name);
         console.log(materials[materialIndex]);
-        return (
-          <div className={classes.materialContainer}>
+        if (materials[materialIndex].name !== "-") {
+          return (
+            <div className={classes.materialContainer}>
             <img src={materials[materialIndex].imgSrc}></img>
             <p>{materials[materialIndex].imgSrc}</p>
             <p>{upgrade.quantity}</p>
           </div>
         );
+      }
       })}
     </div>
   );
