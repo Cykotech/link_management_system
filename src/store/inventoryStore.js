@@ -26,3 +26,11 @@ export function changeMaterialQuantity(item, quantity) {
 
   console.log(`Stored ${quantity} ${item}`);
 }
+
+export function consumeMaterials(materialsToConsume) {
+  materialsToConsume.forEach((material) => {
+    useInventoryStore.setState((prev) => ({
+      inventory: new Map(prev.inventory).set(material.name, material.quantity),
+    }));
+  });
+}
