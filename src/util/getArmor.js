@@ -12,6 +12,8 @@ export async function getArmor() {
         imgSrc: json[armorIndexInJson][1],
         set: json[armorIndexInJson][2],
         upgrades: {},
+        isObtained: false,
+        isUpgradeable: json[armorIndexInJson][27] === 'TRUE' ? true : false,
       };
 
       for (let level = 0; level < 4; level++) {
@@ -43,6 +45,8 @@ export async function getArmor() {
           });
         }
       }
+
+      armor.upgrades[4] = [];
 
       armors.push(armor);
     }
