@@ -1,4 +1,26 @@
-export async function getArmor() {
+export type Armor = {
+  name: string,
+  imgSrc: string,
+  set: string,
+  upgrades: Upgrades | {},
+  isObtained: boolean,
+  isUpgradeable: boolean
+}
+
+type Upgrades = {
+  0: Upgrade[],
+  1: Upgrade[],
+  2: Upgrade[],
+  3: Upgrade[],
+  4: [],
+}
+
+type Upgrade = {
+  name: string,
+  quantity: number
+}
+
+export async function getArmor(): Promise<Armor[]> {
   try {
     const response = await fetch(
       "https://script.google.com/macros/s/AKfycbxKP-yGhf7s9zWImE2dmc9hUA9k3i5SVV0vf-kiqlT6JBXAH26pBaZDRbxyDhkpOZU/exec?type=armor"
@@ -7,7 +29,7 @@ export async function getArmor() {
     const armors = [];
 
     for (let armorIndexInJson = 0; armorIndexInJson < Object.keys(json).length; armorIndexInJson++) {
-      const armor = {
+      const armor: Armor = {
         name: json[armorIndexInJson][0],
         imgSrc: json[armorIndexInJson][1],
         set: json[armorIndexInJson][2],
