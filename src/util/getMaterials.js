@@ -9,5 +9,3 @@ export async function getMaterials() {
     console.log(err);
   }
 }
-
-getMaterials();
