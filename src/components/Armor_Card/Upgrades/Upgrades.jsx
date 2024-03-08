@@ -1,21 +1,24 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 
 import { consumeMaterials } from "../../../store/inventoryStore";
+import { useArmorsStore } from "../../../store/armorStore";
 
 import classes from "./Upgrades.module.scss";
 
-export function Upgrades({ upgrades, materials }) {
-  const [currentLevel, SetCurrentLevel] = useState(0);
+export function Upgrades({ upgrades, materials, armorName }) {
+  const armorsStore = useArmorsStore((state) => state);
+  const armorToUpgrade = armorsStore.armors.find(
+    (armor) => armor.name === armorName
+  );
 
   function upgradeButton() {
-    if (currentLevel !== 4) {
+    if (armorToUpgrade.currentLevel !== 4) {
       return (
         <button
           onClick={() => {
-            consumeMaterials(upgrades[currentLevel]);
-            SetCurrentLevel(currentLevel + 1);
+            consumeMaterials(upgrades[armorToUpgrade.currentLevel]);
+            armorsStore.setLevel(armorToUpgrade, armorToUpgrade.currentLevel + 1, armorsStore);
           }}>
           Upgrade
         </button>
@@ -26,15 +29,30 @@ export function Upgrades({ upgrades, materials }) {
   return (
     <>
       <div className={classes.levelContainer}>
-        <button onClick={() => SetCurrentLevel(0)}>Base</button>
-        <button onClick={() => SetCurrentLevel(1)}>1</button>
-        <button onClick={() => SetCurrentLevel(2)}>2</button>
-        <button onClick={() => SetCurrentLevel(3)}>3</button>
-        <button onClick={() => SetCurrentLevel(4)}>4</button>
+        <button
+          onClick={() => armorsStore.setLevel(armorToUpgrade, 0, armorsStore)}>
+          Base
+        </button>
+        <button
+          onClick={() => armorsStore.setLevel(armorToUpgrade, 1, armorsStore)}>
+          1
+        </button>
+        <button
+          onClick={() => armorsStore.setLevel(armorToUpgrade, 2, armorsStore)}>
+          2
+        </button>
+        <button
+          onClick={() => armorsStore.setLevel(armorToUpgrade, 3, armorsStore)}>
+          3
+        </button>
+        <button
+          onClick={() => armorsStore.setLevel(armorToUpgrade, 4, armorsStore)}>
+          4
+        </button>
       </div>
 
       <div className={classes.upgradeContainer}>
-        {upgrades[currentLevel].map((upgrade) => {
+        {upgrades[armorToUpgrade.currentLevel].map((upgrade) => {
           const materialIndex = materials.findIndex(
             (material) => material.name === upgrade.name
           );

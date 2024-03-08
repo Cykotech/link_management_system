@@ -12,12 +12,17 @@ export function ArmorCard({
   materials,
   isUpgradeable,
 }) {
-
   function canBeUpgraded() {
     if (isUpgradeable) {
-      return <Upgrades upgrades={upgrades} materials={materials} />;
+      return (
+        <Upgrades
+          armorName={children}
+          upgrades={upgrades}
+          materials={materials}
+        />
+      );
     }
-  } 
+  }
 
   return (
     <div className={classes.card}>

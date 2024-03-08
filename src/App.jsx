@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, Routes, Route } from "react-router-dom";
 
 import { mapInventory } from "./store/inventoryStore";
+import { useArmorsStore } from "./store/armorStore";
+
 import { getMaterials } from "./util/getMaterials";
 import { getArmor } from "./util/getArmor";
 
@@ -30,15 +32,15 @@ function App() {
       .then((res) => {
         setMaterials(res);
       })
-      .then(mapInventory());
+      .then(mapInventory())
+      .then(console.log("Inventory loaded"));
 
-    console.log("Inventory loaded");
-
-    getArmor().then((res) => {
-      setArmors(res);
-    });
-
-    console.log("Armors loaded");
+    getArmor()
+      .then((res) => {
+        setArmors(res);
+      })
+      .then(useArmorsStore.getState().populateArmor())
+      .then(console.log("Armors loaded"));
   }, []);
 
   return (
@@ -65,7 +67,12 @@ function App() {
           />
           <Route
             path="/armor"
-            element={<ArmorTracker armors={armors} materials={materials}/>}
+            element={
+              <ArmorTracker
+                armors={armors}
+                materials={materials}
+              />
+            }
           />
           <Route
             path="/cookbook"
