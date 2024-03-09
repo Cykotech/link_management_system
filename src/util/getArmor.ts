@@ -15,7 +15,7 @@ export type TUpgrades = {
   4: [],
 }
 
-type TUpgrade = {
+export type TUpgrade = {
   name: string,
   quantity: number
 }

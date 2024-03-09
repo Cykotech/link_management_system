@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 
-import { consumeMaterials } from "../../../store/inventoryStore";
+import { useInventoryStore } from "../../../store/inventoryStore";
 import { useArmorsStore } from "../../../store/armorStore";
 
 import { TMaterial } from "../../../util/getMaterials";
@@ -18,6 +18,8 @@ type TProps = {
 
 export function Upgrades({ upgrades, materials, armorName }: TProps) {
   const armorsStore = useArmorsStore((state) => state);
+  const inventoryStore = useInventoryStore((state) => state);
+
   const [armorToUpgrade, setArmorToUpgrade] = useState({
     name: "",
     currentLevel: 0,
@@ -36,7 +38,10 @@ export function Upgrades({ upgrades, materials, armorName }: TProps) {
       return (
         <button
           onClick={() => {
-            consumeMaterials(upgrades[armorToUpgrade.currentLevel]);
+            inventoryStore.consumeMaterials(
+              upgrades[armorToUpgrade.currentLevel],
+              inventoryStore
+            );
             armorsStore.setLevel(
               armorToUpgrade,
               armorToUpgrade.currentLevel + 1,
