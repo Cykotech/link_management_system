@@ -3,8 +3,8 @@ import { create } from "zustand";
 import { getArmor } from "../util/getArmor";
 
 type ArmorState = {
-  name: String;
-  currentLevel: Number;
+  name: string;
+  currentLevel: number;
   isObtained: boolean;
 };
 
