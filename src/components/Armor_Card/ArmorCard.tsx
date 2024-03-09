@@ -3,7 +3,18 @@
 
 import { Upgrades } from "./Upgrades/Upgrades";
 
+import { TUpgrades } from "../../util/getArmor";
+import { TMaterial } from "../../util/getMaterials";
+
 import classes from "./ArmorCard.module.scss";
+
+type Props = {
+  children: string;
+  imgSrc: string;
+  materials: TMaterial[];
+  isUpgradeable: boolean;
+  upgrades?: TUpgrades | {};
+};
 
 export function ArmorCard({
   children,
@@ -11,7 +22,7 @@ export function ArmorCard({
   upgrades,
   materials,
   isUpgradeable,
-}) {
+}: Props) {
   function canBeUpgraded() {
     if (isUpgradeable) {
       return (
