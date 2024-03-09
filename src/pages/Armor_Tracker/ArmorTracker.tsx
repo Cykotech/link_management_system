@@ -4,9 +4,17 @@
 
 import { ArmorCard } from "../../components/Armor_Card/ArmorCard";
 
+import { TArmor } from "../../util/getArmor";
+import { TMaterial } from "../../util/getMaterials";
+
 import classes from "./ArmorTracker.module.scss";
 
-export function ArmorTracker({ armors, materials }) {
+type Props = {
+  armors: TArmor[];
+  materials: TMaterial[];
+}
+
+export function ArmorTracker({ armors, materials }: Props) {
 
   return (
     <div className={classes.container}>

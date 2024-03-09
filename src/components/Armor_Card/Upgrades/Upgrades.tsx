@@ -11,7 +11,7 @@ import { TUpgrades } from "../../../util/getArmor";
 import classes from "./Upgrades.module.scss";
 
 type TProps = {
-  upgrades: TUpgrades;
+  upgrades: TUpgrades | {};
   materials: TMaterial[];
   armorName: string;
 };
