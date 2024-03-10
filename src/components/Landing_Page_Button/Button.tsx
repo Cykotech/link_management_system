@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 
 import classes from "./Button.module.scss";
 
-export function Button({ children, link }) {
+type Props = {
+  children: string;
+  link: string;
+}
+
+export function Button({ children, link }: Props) {
   return (
     <>
       <div className={classes.button}>
