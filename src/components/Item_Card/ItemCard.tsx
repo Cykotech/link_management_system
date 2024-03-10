@@ -1,7 +1,14 @@
 /* eslint-disable react/prop-types */
 import classes from "./ItemCard.module.scss";
 
-export function ItemCard({ children, imgSrc, quantity, handleChange }) {
+type Props = {
+  children: string;
+  imgSrc: string;
+  quantity: number;
+  handleChange: (children: string, event: number) => void;
+}
+
+export function ItemCard({ children, imgSrc, quantity, handleChange }: Props) {
 
   return (
     <div className={classes.card}>
