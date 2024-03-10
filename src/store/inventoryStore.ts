@@ -63,34 +63,3 @@ export const useInventoryStore = create<State & Actions>((set) => ({
     });
   },
 }));
-
-// export async function mapInventory() {
-//   const materials = await getMaterials();
-//   materials.forEach((material) => {
-//     useInventoryStore.setState((prev) => ({
-//       inventory: prev.inventory.set(material.name, 0),
-//     }));
-//   });
-// }
-
-// export function changeMaterialQuantity(item, quantity) {
-//   if (quantity <= 999) {
-//     useInventoryStore.setState((prev) => ({
-//       inventory: new Map(prev.inventory).set(item, quantity),
-//     }));
-//   } else {
-//     useInventoryStore.setState((prev) => ({
-//       inventory: new Map(prev.inventory).set(item, 999),
-//     }));
-//   }
-
-//   console.log(`Stored ${quantity} ${item}`);
-// }
-
-// export function consumeMaterials(materialsToConsume) {
-//   materialsToConsume.forEach((material) => {
-//     useInventoryStore.setState((prev) => ({
-//       inventory: new Map(prev.inventory).set(material.name, material.quantity),
-//     }));
-//   });
-// }
