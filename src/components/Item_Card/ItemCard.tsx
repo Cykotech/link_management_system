@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
+import { useInventoryStore } from "../../store/inventoryStore";
+
 import classes from "./ItemCard.module.scss";
 
 type Props = {
   children: string;
   imgSrc: string;
   quantity: number;
-  handleChange: (children: string, event: number) => void;
-}
+};
 
-export function ItemCard({ children, imgSrc, quantity, handleChange }: Props) {
+export function ItemCard({ children, imgSrc, quantity }: Props) {
+  const inventory = useInventoryStore((state) => state);
 
   return (
     <div className={classes.card}>
@@ -21,7 +23,7 @@ export function ItemCard({ children, imgSrc, quantity, handleChange }: Props) {
         max="999"
         value={quantity ?? 0}
         onChange={(event) => {
-          handleChange(children, Number(event.target.value));
+          inventory.setQuantity(children, Number(event.target.value), inventory);
         }}></input>
     </div>
   );
