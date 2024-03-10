@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 import { useInventoryStore } from "../../../store/inventoryStore";
-import { useArmorsStore } from "../../../store/armorStore";
+import { useArmorsStore, ArmorState } from "../../../store/armorStore";
 
 import { TMaterial } from "../../../util/getMaterials";
 import { TUpgrades } from "../../../util/getArmor";
@@ -20,7 +20,7 @@ export function Upgrades({ upgrades, materials, armorName }: TProps) {
   const armorsStore = useArmorsStore((state) => state);
   const inventoryStore = useInventoryStore((state) => state);
 
-  const [armorToUpgrade, setArmorToUpgrade] = useState({
+  const [armorToUpgrade, setArmorToUpgrade] = useState<ArmorState>({
     name: "",
     currentLevel: 0,
     isObtained: false,
@@ -62,7 +62,7 @@ export function Upgrades({ upgrades, materials, armorName }: TProps) {
             const materialIndex = materials.findIndex(
               (material) => material.name === upgrade.name
             );
-            if (upgrade.name !== "-") {
+            if (upgrade.name !== "") {
               return (
                 <div className={classes.materialContainer}>
                   <img src={materials[materialIndex].imgSrc}></img>
@@ -103,7 +103,7 @@ export function Upgrades({ upgrades, materials, armorName }: TProps) {
       </div>
 
       {displayUpgradeMaterials()}
-      {/* {upgradeButton()} */}
+      {upgradeButton()}
     </>
   );
 }

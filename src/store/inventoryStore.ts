@@ -53,7 +53,9 @@ export const useInventoryStore = create<State & Actions>((set) => ({
       const materialIndex: number = state.inventory.findIndex(
         (item) => item.name === material.name
       );
-      state.inventory[materialIndex].quantity -= material.quantity;
+      if (materialIndex !== -1) {
+        state.inventory[materialIndex].quantity -= material.quantity;
+      }
 
       set((state) => ({
         inventory: [...state.inventory],

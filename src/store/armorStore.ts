@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 import { getArmor } from "../util/getArmor";
 
-type ArmorState = {
+export type ArmorState = {
   name: string;
   currentLevel: number;
   isObtained: boolean;
