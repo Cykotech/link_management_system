@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Routes, Route } from "react-router-dom";
 
-import { mapInventory } from "./store/inventoryStore";
+import { useInventoryStore } from "./store/inventoryStore";
 import { useArmorsStore } from "./store/armorStore";
 
 import { getMaterials } from "./util/getMaterials";
@@ -13,6 +13,9 @@ import { ArmorTracker } from "./pages/Armor_Tracker/ArmorTracker";
 import { BatteryCalculator } from "./pages/Battery_Calculator/BatteryCalculator";
 import { Cookbook } from "./pages/Cookbook/Cookbook";
 
+import { TArmor } from "./util/getArmor";
+import { TMaterial } from "./util/getMaterials";
+
 import { Sidebar } from "./components/Sidebar/Sidebar";
 
 import { HiOutlineMenu } from "react-icons/hi";
@@ -21,8 +24,8 @@ import "./App.scss";
 import background from "./assets/Images/background.webp";
 
 function App() {
-  const [materials, setMaterials] = useState([]);
-  const [armors, setArmors] = useState([]);
+  const [materials, setMaterials] = useState<TMaterial[]>([]);
+  const [armors, setArmors] = useState<TArmor[]>([]);
 
   useEffect(() => {
     console.log("Loading inventory...");
@@ -31,16 +34,20 @@ function App() {
     getMaterials()
       .then((res) => {
         setMaterials(res);
+        return useInventoryStore.getState().populateInventory();
       })
-      .then(mapInventory())
-      .then(console.log("Inventory loaded"));
+      .then(() => {
+        console.log("Inventory loaded");
+      });
 
     getArmor()
       .then((res) => {
         setArmors(res);
+        return useArmorsStore.getState().populateArmor();
       })
-      .then(useArmorsStore.getState().populateArmor())
-      .then(console.log("Armors loaded"));
+      .then(() => {
+        console.log("Armors loaded");
+      });
   }, []);
 
   return (
