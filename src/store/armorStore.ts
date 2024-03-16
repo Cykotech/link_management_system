@@ -15,6 +15,7 @@ type State = {
 type Actions = {
   setLevel: (armorToSet: ArmorState, level: number, state: State) => void;
   populateArmor: () => Promise<void>;
+  obtainArmor: (armorToSet: string, state: State) => void;
 };
 
 const initialState: ArmorState[] = [];
@@ -42,6 +43,17 @@ export const useArmorsStore = create<State & Actions>((set) => ({
 
     set(() => ({
       armors: armorsState,
+    }));
+  },
+  obtainArmor: (armorToSet: string, state: State) => {
+    const armorIndex: number = state.armors.findIndex(
+      (armor) => armor.name === armorToSet
+    );
+
+    state.armors[armorIndex].isObtained = !state.armors[armorIndex].isObtained;
+
+    set((state) => ({
+      armors: [...state.armors],
     }));
   },
 }));
