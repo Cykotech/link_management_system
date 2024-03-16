@@ -18,7 +18,10 @@ type TProps = {
 
 export function Upgrades({ upgrades, materials, armorName }: TProps) {
   const armorsStore = useArmorsStore((state) => state);
+  const { armors, setLevel } = useArmorsStore((state) => state);
+  
   const inventoryStore = useInventoryStore((state) => state);
+  const { consumeMaterials } = useInventoryStore((state) => state);
 
   const [armorToUpgrade, setArmorToUpgrade] = useState<ArmorState>({
     name: "",
@@ -27,26 +30,20 @@ export function Upgrades({ upgrades, materials, armorName }: TProps) {
   });
 
   useEffect(() => {
-    const findArmor = armorsStore.armors.find(
-      (armor) => armor.name === armorName
-    );
+    const findArmor = armors.find((armor) => armor.name === armorName);
     setArmorToUpgrade(findArmor);
-  }, [armorsStore]);
+  }, [armors]);
 
   function upgradeButton() {
     if (armorToUpgrade.currentLevel !== 4) {
       return (
         <button
           onClick={() => {
-            inventoryStore.consumeMaterials(
+            consumeMaterials(
               upgrades[armorToUpgrade.currentLevel],
               inventoryStore
             );
-            armorsStore.setLevel(
-              armorToUpgrade,
-              armorToUpgrade.currentLevel + 1,
-              armorsStore
-            );
+            setLevel(armorToUpgrade, armorToUpgrade.currentLevel + 1, armorsStore);
           }}>
           Upgrade
         </button>
@@ -81,23 +78,23 @@ export function Upgrades({ upgrades, materials, armorName }: TProps) {
     <>
       <div className={classes.levelContainer}>
         <button
-          onClick={() => armorsStore.setLevel(armorToUpgrade, 0, armorsStore)}>
+          onClick={() => setLevel(armorToUpgrade, 0, armorsStore)}>
           Base
         </button>
         <button
-          onClick={() => armorsStore.setLevel(armorToUpgrade, 1, armorsStore)}>
+          onClick={() => setLevel(armorToUpgrade, 1, armorsStore)}>
           1
         </button>
         <button
-          onClick={() => armorsStore.setLevel(armorToUpgrade, 2, armorsStore)}>
+          onClick={() => setLevel(armorToUpgrade, 2, armorsStore)}>
           2
         </button>
         <button
-          onClick={() => armorsStore.setLevel(armorToUpgrade, 3, armorsStore)}>
+          onClick={() => setLevel(armorToUpgrade, 3, armorsStore)}>
           3
         </button>
         <button
-          onClick={() => armorsStore.setLevel(armorToUpgrade, 4, armorsStore)}>
+          onClick={() => setLevel(armorToUpgrade, 4, armorsStore)}>
           4
         </button>
       </div>
