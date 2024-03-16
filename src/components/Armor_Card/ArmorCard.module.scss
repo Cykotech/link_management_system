@@ -10,3 +10,15 @@
     font-size: 2rem;
   }
 }
+
+.notUpgradeable {
+  display: none;
+}
+
+.obtained {
+  border: none;
+}
+
+.notObtained {
+  border: 2px solid red;
+}
