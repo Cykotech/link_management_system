@@ -6,9 +6,6 @@ import { ArmorCard } from "../../components/Armor_Card/ArmorCard";
 
 import { useArmorsStore } from "../../store/armorStore";
 
-import { TArmor } from "../../util/getArmor";
-import { TMaterial } from "../../util/getMaterials";
-
 import classes from "./ArmorTracker.module.scss";
 
 export function ArmorTracker() {

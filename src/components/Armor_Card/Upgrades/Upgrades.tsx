@@ -12,11 +12,12 @@ import { TUpgrades } from "../../../util/getArmor";
 import classes from "./Upgrades.module.scss";
 
 type TProps = {
+  id: string;
   upgrades: TUpgrades | {};
   armorName: string;
 };
 
-export function Upgrades({ upgrades, armorName }: TProps) {
+export function Upgrades({ id, upgrades, armorName }: TProps) {
   const armorsStore = useArmorsStore((state) => state);
   const { armors, setLevel } = useArmorsStore((state) => state);
 
@@ -33,7 +34,12 @@ export function Upgrades({ upgrades, armorName }: TProps) {
       return (
         <button
           onClick={() => {
-            upgradeArmor(armorToUpgrade, armorToUpgrade.currentLevel, inventoryStore, armorsStore);
+            upgradeArmor(
+              armorToUpgrade,
+              armorToUpgrade.currentLevel,
+              inventoryStore,
+              armorsStore
+            );
           }}>
           Upgrade
         </button>
@@ -45,13 +51,15 @@ export function Upgrades({ upgrades, armorName }: TProps) {
     if (armorToUpgrade) {
       return (
         <div className={classes.upgradeContainer}>
-          {upgrades[armorToUpgrade.currentLevel].map((upgrade) => {
+          {upgrades[armorToUpgrade.currentLevel].map((upgrade, index) => {
             const materialIndex = inventory.findIndex(
               (material) => material.name === upgrade.name
             );
             if (upgrade.name !== "") {
               return (
-                <div className={classes.materialContainer}>
+                <div
+                  className={classes.materialContainer}
+                  key={`${id}-${index}`}>
                   <img src={inventory[materialIndex].imgSrc}></img>
                   <p>{inventory[materialIndex].name}</p>
                   <p>{upgrade.quantity}</p>

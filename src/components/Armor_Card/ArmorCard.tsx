@@ -7,11 +7,11 @@ import { Upgrades } from "./Upgrades/Upgrades";
 import { useArmorsStore } from "../../store/armorStore";
 
 import { ArmorState } from "../../store/armorStore";
-import { TMaterial } from "../../util/getMaterials";
 
 import classes from "./ArmorCard.module.scss";
 
 type Props = {
+  key: string;
   armor: ArmorState;
   children: string;
   obtainDisplay: boolean;
@@ -19,6 +19,7 @@ type Props = {
 };
 
 export function ArmorCard({
+  key,
   armor,
   children,
   obtainDisplay,
@@ -32,6 +33,7 @@ export function ArmorCard({
     if (armor.isUpgradeable) {
       return (
         <Upgrades
+          id={key}
           armorName={children}
           upgrades={armor.upgrades}
         />
