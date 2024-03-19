@@ -1,11 +1,15 @@
 import { create } from "zustand";
 
-import { getArmor } from "../util/getArmor";
+import { getArmor, TUpgrades } from "../util/getArmor";
 
 export type ArmorState = {
-  name: string;
-  currentLevel: number;
-  isObtained: boolean;
+  name: string,
+  imgSrc: string,
+  set: string,
+  upgrades: TUpgrades | {},
+  isObtained: boolean,
+  isUpgradeable: boolean,
+  currentLevel: number,
 };
 
 type State = {
@@ -37,8 +41,12 @@ export const useArmorsStore = create<State & Actions>((set) => ({
     const armors = await getArmor();
     const armorsState: ArmorState[] = armors.map((armor) => ({
       name: armor.name,
+      imgSrc: armor.imgSrc,
+      set: armor.set,
+      upgrades: armor.upgrades,
       currentLevel: 0,
       isObtained: armor.isObtained,
+      isUpgradeable: armor.isUpgradeable
     }));
 
     set(() => ({

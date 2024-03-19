@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 
 import { useInventoryStore } from "../../../store/inventoryStore";
-import { useArmorsStore, ArmorState } from "../../../store/armorStore";
+import { useArmorsStore } from "../../../store/armorStore";
 
 import { TMaterial } from "../../../util/getMaterials";
 import { TUpgrades } from "../../../util/getArmor";
@@ -12,27 +12,17 @@ import classes from "./Upgrades.module.scss";
 
 type TProps = {
   upgrades: TUpgrades | {};
-  materials: TMaterial[];
   armorName: string;
 };
 
-export function Upgrades({ upgrades, materials, armorName }: TProps) {
+export function Upgrades({ upgrades, armorName }: TProps) {
   const armorsStore = useArmorsStore((state) => state);
   const { armors, setLevel } = useArmorsStore((state) => state);
-  
+
   const inventoryStore = useInventoryStore((state) => state);
-  const { consumeMaterials } = useInventoryStore((state) => state);
+  const { inventory, consumeMaterials } = useInventoryStore((state) => state);
 
-  const [armorToUpgrade, setArmorToUpgrade] = useState<ArmorState>({
-    name: "",
-    currentLevel: 0,
-    isObtained: false,
-  });
-
-  useEffect(() => {
-    const findArmor = armors.find((armor) => armor.name === armorName);
-    setArmorToUpgrade(findArmor);
-  }, [armors]);
+  const armorToUpgrade = useMemo(() => armors.find((armor) => armor.name === armorName), [armorName])
 
   function upgradeButton() {
     if (armorToUpgrade.currentLevel !== 4) {
@@ -43,7 +33,11 @@ export function Upgrades({ upgrades, materials, armorName }: TProps) {
               upgrades[armorToUpgrade.currentLevel],
               inventoryStore
             );
-            setLevel(armorToUpgrade, armorToUpgrade.currentLevel + 1, armorsStore);
+            setLevel(
+              armorToUpgrade,
+              armorToUpgrade.currentLevel + 1,
+              armorsStore
+            );
           }}>
           Upgrade
         </button>
@@ -56,14 +50,14 @@ export function Upgrades({ upgrades, materials, armorName }: TProps) {
       return (
         <div className={classes.upgradeContainer}>
           {upgrades[armorToUpgrade.currentLevel].map((upgrade) => {
-            const materialIndex = materials.findIndex(
+            const materialIndex = inventory.findIndex(
               (material) => material.name === upgrade.name
             );
             if (upgrade.name !== "") {
               return (
                 <div className={classes.materialContainer}>
-                  <img src={materials[materialIndex].imgSrc}></img>
-                  <p>{materials[materialIndex].name}</p>
+                  <img src={inventory[materialIndex].imgSrc}></img>
+                  <p>{inventory[materialIndex].name}</p>
                   <p>{upgrade.quantity}</p>
                 </div>
               );
@@ -77,24 +71,19 @@ export function Upgrades({ upgrades, materials, armorName }: TProps) {
   return (
     <>
       <div className={classes.levelContainer}>
-        <button
-          onClick={() => setLevel(armorToUpgrade, 0, armorsStore)}>
+        <button onClick={() => setLevel(armorToUpgrade, 0, armorsStore)}>
           Base
         </button>
-        <button
-          onClick={() => setLevel(armorToUpgrade, 1, armorsStore)}>
+        <button onClick={() => setLevel(armorToUpgrade, 1, armorsStore)}>
           1
         </button>
-        <button
-          onClick={() => setLevel(armorToUpgrade, 2, armorsStore)}>
+        <button onClick={() => setLevel(armorToUpgrade, 2, armorsStore)}>
           2
         </button>
-        <button
-          onClick={() => setLevel(armorToUpgrade, 3, armorsStore)}>
+        <button onClick={() => setLevel(armorToUpgrade, 3, armorsStore)}>
           3
         </button>
-        <button
-          onClick={() => setLevel(armorToUpgrade, 4, armorsStore)}>
+        <button onClick={() => setLevel(armorToUpgrade, 4, armorsStore)}>
           4
         </button>
       </div>

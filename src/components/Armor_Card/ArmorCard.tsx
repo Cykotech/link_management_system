@@ -1,26 +1,24 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 import { Upgrades } from "./Upgrades/Upgrades";
 
 import { useArmorsStore } from "../../store/armorStore";
 
-import { TArmor } from "../../util/getArmor";
+import { ArmorState } from "../../store/armorStore";
 import { TMaterial } from "../../util/getMaterials";
 
 import classes from "./ArmorCard.module.scss";
 
 type Props = {
-  armor: TArmor;
-  materials: TMaterial[];
+  armor: ArmorState;
   children: string;
   obtainDisplay: boolean;
   upgradeDisplay: boolean;
 };
 
 export function ArmorCard({
-  materials,
   armor,
   children,
   obtainDisplay,
@@ -28,13 +26,7 @@ export function ArmorCard({
 }: Props) {
   const armorsStore = useArmorsStore((state) => state);
   const { armors, obtainArmor } = useArmorsStore((state) => state);
-  const armorIndex = armorsStore.armors.findIndex(
-    (armor) => armor.name === children
-  );
-
-  useEffect(() => {
-    console.log(armor.isObtained);
-  }, [armor]);
+  const armorIndex = armors.findIndex((armor) => armor.name === children);
 
   function canBeUpgraded() {
     if (armor.isUpgradeable) {
@@ -42,7 +34,6 @@ export function ArmorCard({
         <Upgrades
           armorName={children}
           upgrades={armor.upgrades}
-          materials={materials}
         />
       );
     }
@@ -55,10 +46,9 @@ export function ArmorCard({
   }
 
   function obtainClassToggle() {
-    if (!armor.isObtained) {
-      return obtainDisplay ? classes.notObtained : "";
+    if (obtainDisplay) {
+      return armors[armorIndex].isObtained ? classes.obtained : "";
     }
-    // return armor.isObtained ? classes.obtained : classes.notObtained
   }
 
   return (

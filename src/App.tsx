@@ -24,27 +24,20 @@ import "./App.scss";
 import background from "./assets/Images/background.webp";
 
 function App() {
-  const [materials, setMaterials] = useState<TMaterial[]>([]);
-  const [armors, setArmors] = useState<TArmor[]>([]);
-
   useEffect(() => {
     console.log("Loading inventory...");
     console.log("Loading armors...");
 
-    getMaterials()
-      .then((res) => {
-        setMaterials(res);
-        return useInventoryStore.getState().populateInventory();
-      })
+    useInventoryStore
+      .getState()
+      .populateInventory()
       .then(() => {
         console.log("Inventory loaded");
       });
 
-    getArmor()
-      .then((res) => {
-        setArmors(res);
-        return useArmorsStore.getState().populateArmor();
-      })
+    useArmorsStore
+      .getState()
+      .populateArmor()
       .then(() => {
         console.log("Armors loaded");
       });
@@ -70,16 +63,11 @@ function App() {
           />
           <Route
             path="/inventory"
-            element={<InventoryManager materials={materials} />}
+            element={<InventoryManager />}
           />
           <Route
             path="/armor"
-            element={
-              <ArmorTracker
-                armors={armors}
-                materials={materials}
-              />
-            }
+            element={<ArmorTracker />}
           />
           <Route
             path="/cookbook"

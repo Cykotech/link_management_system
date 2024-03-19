@@ -6,6 +6,7 @@ import { TUpgrade } from "../util/getArmor";
 
 type InventoryState = {
   name: string;
+  imgSrc: string;
   quantity: number;
 };
 
@@ -27,6 +28,7 @@ export const useInventoryStore = create<State & Actions>((set) => ({
     const materials = await getMaterials();
     const inventoryState: InventoryState[] = materials.map((material) => ({
       name: material.name,
+      imgSrc: material.imgSrc,
       quantity: 0,
     }));
 
