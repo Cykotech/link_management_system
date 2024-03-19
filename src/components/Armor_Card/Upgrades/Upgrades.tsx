@@ -5,7 +5,8 @@ import { useMemo } from "react";
 import { useInventoryStore } from "../../../store/inventoryStore";
 import { useArmorsStore } from "../../../store/armorStore";
 
-import { TMaterial } from "../../../util/getMaterials";
+import { upgradeArmor } from "../../../util/upgradeFunction";
+
 import { TUpgrades } from "../../../util/getArmor";
 
 import classes from "./Upgrades.module.scss";
@@ -20,24 +21,19 @@ export function Upgrades({ upgrades, armorName }: TProps) {
   const { armors, setLevel } = useArmorsStore((state) => state);
 
   const inventoryStore = useInventoryStore((state) => state);
-  const { inventory, consumeMaterials } = useInventoryStore((state) => state);
+  const { inventory } = useInventoryStore((state) => state);
 
-  const armorToUpgrade = useMemo(() => armors.find((armor) => armor.name === armorName), [armorName])
+  const armorToUpgrade = useMemo(
+    () => armors.find((armor) => armor.name === armorName),
+    [armorName]
+  );
 
   function upgradeButton() {
     if (armorToUpgrade.currentLevel !== 4) {
       return (
         <button
           onClick={() => {
-            consumeMaterials(
-              upgrades[armorToUpgrade.currentLevel],
-              inventoryStore
-            );
-            setLevel(
-              armorToUpgrade,
-              armorToUpgrade.currentLevel + 1,
-              armorsStore
-            );
+            upgradeArmor(armorToUpgrade, armorToUpgrade.currentLevel, inventoryStore, armorsStore);
           }}>
           Upgrade
         </button>
