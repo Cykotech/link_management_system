@@ -33,10 +33,10 @@ export function ArmorTracker({ armors, materials }: Props) {
         onClick={() => {
           toggleUpgradeDisplay();
         }}>
-        Toggle isUpgradeable Display
+        {!upgradeDisplay ? "Show upgradeable armors" : "Hide upgradeable armors"}
       </button>
       <button onClick={() => toggleObtainDisplay()}>
-        Toggle isObtained Display
+        {!obtainDisplay ? "Highlight obtained armors" : "Turn off obtained highlight"}
       </button>
       <div className={classes.grid}>
         {armors.map((armor) => {
