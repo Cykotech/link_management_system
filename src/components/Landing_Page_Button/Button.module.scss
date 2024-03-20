@@ -1,9 +1,15 @@
+@import "../../styles/themes/totk.scss";
+
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: hsla(152, 73%, 60%, 0.5);
   border: 2px solid black;
+  border-radius: 1rem;
+  box-shadow: $shadow 10px 5px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
   a {
     width: 100%;

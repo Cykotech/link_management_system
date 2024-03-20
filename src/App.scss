@@ -1,3 +1,5 @@
+@import "./styles/themes/totk.scss";
+
 html,
 body {
   height: 100%;
@@ -19,7 +21,7 @@ header {
   align-items: center;
   border-bottom: solid 2px black;
   padding-inline: 1.5rem;
-  background-color: hsla(152, 73%, 60%, 0.5);
+  background-color: $primary;
 
   svg {
     font-size: 3rem;

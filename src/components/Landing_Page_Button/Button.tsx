@@ -6,12 +6,18 @@ import classes from "./Button.module.scss";
 type Props = {
   children: string;
   link: string;
-}
+};
 
 export function Button({ children, link }: Props) {
+  const imageUrl = `"/src/assets/Images${link}.webp"`;
+
   return (
     <>
-      <div className={classes.button}>
+      <div
+        className={classes.button}
+        style={{
+          backgroundImage: `url(${imageUrl})`,
+        }}>
         <Link to={link}>
           <h2>{children}</h2>
         </Link>
