@@ -15,7 +15,7 @@ import { Sidebar } from "./components/Sidebar/Sidebar";
 import { HiOutlineMenu } from "react-icons/hi";
 
 import "./App.scss";
-import background from "./assets/Images/background.webp";
+import background from "../public/Images/background.webp";
 
 function App() {
   const { pathname } = useLocation();

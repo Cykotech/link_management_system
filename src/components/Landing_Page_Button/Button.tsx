@@ -9,7 +9,7 @@ type Props = {
 };
 
 export function Button({ children, link }: Props) {
-  const imageUrl = `"src/assets/Images${link}.webp"`;
+  const imageUrl = `"./public/Images${link}.webp"`;
   const style = { "--bg": `url(${imageUrl})` } as React.CSSProperties;
 
   return (
