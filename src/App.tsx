@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, Routes, Route, useLocation } from "react-router-dom";
 
 import { useInventoryStore } from "./store/inventoryStore";
 import { useArmorsStore } from "./store/armorStore";
@@ -18,6 +18,7 @@ import "./App.scss";
 import background from "./assets/Images/background.webp";
 
 function App() {
+  const { pathname } = useLocation();
   useEffect(() => {
     console.log("Loading inventory...");
     console.log("Loading armors...");
@@ -36,6 +37,10 @@ function App() {
         console.log("Armors loaded");
       });
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);;
+  }, [pathname]);
 
   return (
     <>
