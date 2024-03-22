@@ -9,15 +9,14 @@ type Props = {
 };
 
 export function Button({ children, link }: Props) {
-  const imageUrl = `"/src/assets/Images${link}.webp"`;
+  const imageUrl = `"src/assets/Images${link}.webp"`;
+  const style = { "--bg": `url(${imageUrl})` } as React.CSSProperties;
 
   return (
     <>
       <div
         className={classes.button}
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-        }}>
+        style={style}>
         <Link to={link}>
           <h2>{children}</h2>
         </Link>

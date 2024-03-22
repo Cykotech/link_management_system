@@ -7,6 +7,7 @@
   border: 2px solid black;
   border-radius: 1rem;
   box-shadow: $shadow 10px 5px;
+  background: var(--bg, $primary);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
