@@ -1,11 +1,38 @@
+@import "../../styles/themes/totk.scss";
+
 .card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: hsla(152, 73%, 60%, 0.5);
+  background-color: $primary;
+  border: 2px solid $accent;
+  border-radius: 1rem;
+  box-shadow: $shadow 2px 2px;
+  padding: 1rem;
+
+  img {
+    width: 100%;
+  }
 
   h3 {
     font-size: 2rem;
+    margin-bottom: 1rem;
+    height: 5rem;
+    text-align: center;
+  }
+
+  input {
+    width: 10rem;
+    background-color: $shadow;
+    border: 1px solid $accent;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 1.25rem;
+  }
+
+  :focus-visible {
+    outline: none;
   }
 }
