@@ -48,8 +48,8 @@ export function ArmorCard({
   }
 
   function obtainClassToggle() {
-    if (obtainDisplay) {
-      return armors[armorIndex].isObtained ? classes.obtained : "";
+    if (!obtainDisplay) {
+      return armors[armorIndex].isObtained ? "" : classes.unobtained;
     }
   }
 

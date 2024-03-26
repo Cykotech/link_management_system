@@ -1,13 +1,18 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/themes/totk.scss";
+
 .card {
-  width: 25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: hsla(152, 73%, 60%, 0.5);
+  @include card;
+  opacity: 100%;
 
   h3 {
+    margin-top: .75rem;
+    margin-bottom: .5rem;
     font-size: 2rem;
+  }
+
+  button {
+    @include button;
   }
 }
 
@@ -15,6 +20,6 @@
   display: none;
 }
 
-.obtained {
-  border: 2px solid red;
+.unobtained {
+  opacity: 65%;
 }
