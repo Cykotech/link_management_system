@@ -1,0 +1,19 @@
+@mixin card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
+  border: 2px solid $accent;
+  border-radius: 1rem;
+  box-shadow: $shadow 2px 2px;
+  padding: 1rem;
+}
+
+@mixin button {
+  padding: 15px 20px;
+  border: 1px solid $shadow;
+  border-radius: 0.5rem;
+  background-color: $accent;
+  cursor: pointer;
+}

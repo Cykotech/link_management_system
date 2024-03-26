@@ -1,15 +1,8 @@
 @import "../../styles/themes/totk.scss";
+@import "../../styles/mixins.scss";
 
 .card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: $primary;
-  border: 2px solid $accent;
-  border-radius: 1rem;
-  box-shadow: $shadow 2px 2px;
-  padding: 1rem;
+  @include card;
 
   img {
     width: 100%;
@@ -29,7 +22,9 @@
     border-radius: 0.5rem;
     padding: 0.5rem;
     text-align: center;
+    font-family: "Playfair Display";
     font-size: 1.25rem;
+    color: white;
   }
 
   :focus-visible {
