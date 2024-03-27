@@ -9,6 +9,7 @@ import { upgradeArmor } from "../../../util/upgradeFunction";
 
 import { TUpgrades } from "../../../util/getArmor";
 
+import Star from "/SVG/Pause_Star.svg";
 import classes from "./Upgrades.module.scss";
 
 type TProps = {
@@ -79,16 +80,22 @@ export function Upgrades({ id, upgrades, armorName }: TProps) {
           Base
         </button>
         <button onClick={() => setLevel(armorToUpgrade, 1, armorsStore)}>
-          1
+          <img src={Star}></img>
         </button>
         <button onClick={() => setLevel(armorToUpgrade, 2, armorsStore)}>
-          2
+          <img src={Star}></img>
+          <img src={Star}></img>
         </button>
         <button onClick={() => setLevel(armorToUpgrade, 3, armorsStore)}>
-          3
+          <img src={Star}></img>
+          <img src={Star}></img>
+          <img src={Star}></img>
         </button>
         <button onClick={() => setLevel(armorToUpgrade, 4, armorsStore)}>
-          4
+          <img src={Star}></img>
+          <img src={Star}></img>
+          <img src={Star}></img>
+          <img src={Star}></img>
         </button>
       </div>
 

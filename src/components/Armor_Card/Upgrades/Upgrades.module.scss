@@ -1,11 +1,21 @@
+@import "../../../styles/themes/totk.scss";
+
 .levelContainer {
-  width: 75%;
+  width: 85%;
   display: flex;
   justify-content: space-between;
+  background-color: $shadow;
+  border-radius: .25rem;
   padding: .5rem;
 
   button {
+    background-color: transparent;
     padding: .25rem;
+
+    img {
+      width: .85rem;
+      padding: .25rem;
+    }
   }
 }
 
@@ -21,7 +31,6 @@
 
     img {
       width: 50%;
-
     }
   }
 }

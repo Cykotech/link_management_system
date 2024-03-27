@@ -13,6 +13,8 @@
 
   button {
     @include button;
+    font-family: "Playfair Display";
+    font-size: .975rem;
   }
 }
 
