@@ -63,7 +63,9 @@ export function Upgrades({ id, upgrades, armorName }: TProps) {
                   key={`${id}-${index}`}>
                   <img src={inventory[materialIndex].imgSrc}></img>
                   <p>{inventory[materialIndex].name}</p>
-                  <p>{upgrade.quantity}</p>
+                  <p>
+                    {inventory[materialIndex].quantity} / {upgrade.quantity}
+                  </p>
                 </div>
               );
             }
@@ -76,22 +78,32 @@ export function Upgrades({ id, upgrades, armorName }: TProps) {
   return (
     <>
       <div className={classes.levelContainer}>
-        <button onClick={() => setLevel(armorToUpgrade, 0, armorsStore)}>
+        <button
+          className={classes.button}
+          onClick={() => setLevel(armorToUpgrade, 0, armorsStore)}>
           Base
         </button>
-        <button onClick={() => setLevel(armorToUpgrade, 1, armorsStore)}>
+        <button
+          className={classes.button}
+          onClick={() => setLevel(armorToUpgrade, 1, armorsStore)}>
           <img src={Star}></img>
         </button>
-        <button onClick={() => setLevel(armorToUpgrade, 2, armorsStore)}>
+        <button
+          className={classes.button}
+          onClick={() => setLevel(armorToUpgrade, 2, armorsStore)}>
           <img src={Star}></img>
           <img src={Star}></img>
         </button>
-        <button onClick={() => setLevel(armorToUpgrade, 3, armorsStore)}>
+        <button
+          className={classes.button}
+          onClick={() => setLevel(armorToUpgrade, 3, armorsStore)}>
           <img src={Star}></img>
           <img src={Star}></img>
           <img src={Star}></img>
         </button>
-        <button onClick={() => setLevel(armorToUpgrade, 4, armorsStore)}>
+        <button
+          className={classes.button}
+          onClick={() => setLevel(armorToUpgrade, 4, armorsStore)}>
           <img src={Star}></img>
           <img src={Star}></img>
           <img src={Star}></img>
@@ -100,7 +112,7 @@ export function Upgrades({ id, upgrades, armorName }: TProps) {
       </div>
 
       {displayUpgradeMaterials()}
-      {upgradeButton()}
+      {/* {upgradeButton()} */}
     </>
   );
 }

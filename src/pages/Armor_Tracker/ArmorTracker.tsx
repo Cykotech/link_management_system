@@ -8,23 +8,17 @@ import { useArmorsStore } from "../../store/armorStore";
 
 import classes from "./ArmorTracker.module.scss";
 
-export function ArmorTracker() {
-  const [obtainDisplay, setObtainDisplay] = useState(true);
-  const [upgradeDisplay, setUpgradeDisplay] = useState(true);
+type Props = {
+  obtainDisplay: boolean,
+  upgradeDisplay: boolean
+}
 
+export function ArmorTracker({ obtainDisplay, upgradeDisplay}: Props) {
   const { armors } = useArmorsStore((state) => state);
-
-  function toggleObtainDisplay() {
-    setObtainDisplay(!obtainDisplay);
-  }
-
-  function toggleUpgradeDisplay() {
-    setUpgradeDisplay(!upgradeDisplay);
-  }
 
   return (
     <div className={classes.container}>
-      <div className={classes.headingContainer}>
+      {/* <div className={classes.headingContainer}>
         <h2>Armor Tracker</h2>
         <div className={classes.dropdown}>
           <button className={classes.dropdownButton}>Options</button>
@@ -37,18 +31,20 @@ export function ArmorTracker() {
                 {!upgradeDisplay
                   ? "Show upgradeable armors"
                   : "Hide upgradeable armors"}
-                  <p>Toggles the display of armors that cannot be upgraded.</p>
+                <p>Toggles the display of armors that cannot be upgraded.</p>
               </button>
             </li>
             <li>
               <button onClick={() => toggleObtainDisplay()}>
                 Toggle highlights for obtained armors
-                  <p>{`${!obtainDisplay ? "Turns off highlights for " : "Hightlights"} armors that have been obtained`}</p>
+                <p>{`${
+                  !obtainDisplay ? "Turns off highlights for " : "Hightlights"
+                } armors that have been obtained`}</p>
               </button>
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
       <div className={classes.grid}>
         {armors.map((armor, index) => {
           return (

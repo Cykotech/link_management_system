@@ -11,6 +11,13 @@
     font-size: 2rem;
   }
 
+  .buttonContainer {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+  }
+
   button {
     @include button;
     font-family: "Playfair Display";

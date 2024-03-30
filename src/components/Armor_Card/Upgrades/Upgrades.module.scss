@@ -1,20 +1,22 @@
 @import "../../../styles/themes/totk.scss";
+@import "../../../styles/mixins.scss";
 
 .levelContainer {
-  width: 85%;
+  width: 75%;
   display: flex;
   justify-content: space-between;
   background-color: $shadow;
   border-radius: .25rem;
   padding: .5rem;
 
-  button {
-    background-color: transparent;
-    padding: .25rem;
+  .button {
+    @include button;
+    background-color: $primary;
+    padding: .75rem;
 
     img {
       width: .85rem;
-      padding: .25rem;
+      margin-inline: .25rem;
     }
   }
 }
@@ -22,6 +24,7 @@
 .upgradeContainer {
   width: 100%;
   display: flex;
+  margin-top: 1rem;
 
   .materialContainer {
     width: 30%;
