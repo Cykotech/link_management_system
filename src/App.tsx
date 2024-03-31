@@ -22,6 +22,7 @@ function App() {
   const { pathname } = useLocation();
   const [upgradeDisplay, setUpgradeDisplay] = useState(true);
   const [obtainDisplay, setObtainDisplay] = useState(true);
+  const [openMenu, setOpenMenu] = useState(false);
 
   useEffect(() => {
     console.log("Loading inventory...");
@@ -53,7 +54,11 @@ function App() {
           <Link to="/">
             <h1>Link Management System</h1>
           </Link>
-          <HiOutlineMenu />
+          <HiOutlineMenu
+            onClick={() => {
+              setOpenMenu(!openMenu);
+            }}
+          />
         </div>
         <div className="testDisclaimer">
           Currently in development. Some features may not work as intended.
@@ -77,8 +82,8 @@ function App() {
           {/* <Route
             path="/cookbook"
             element={<CookbookHeader />}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/battery"
             element={<BatteryCalculatorHeader />}
           /> */}
@@ -112,7 +117,7 @@ function App() {
             element={<BatteryCalculator />}
           />
         </Routes>
-        <Sidebar />
+        <Sidebar openMenu={openMenu}/>
       </main>
     </>
   );

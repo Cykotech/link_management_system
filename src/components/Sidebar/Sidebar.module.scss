@@ -1,13 +1,18 @@
+@import "../../styles/themes/totk.scss";
+
 .sidebar {
   width: 15%;
-  height: calc(100vh - 5rem - 2px);
-  position: sticky;
-  top: calc(5rem + 2px);
+  height: calc(100vh - 5rem);
+  position: fixed;
+  bottom: 0;
+  right: -20rem;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(137, 137, 137, 0.5);
+  background-color: $secondary;
   border-left: 2px solid black;
+  transition: right 1s ease-in-out;
 
   .container {
     width: 95%;
@@ -19,13 +24,25 @@
 
     a {
       width: 100%;
+      padding: 0.55rem;
+      color: white;
+      font-family: "Playfair Display";
       font-size: 1.5rem;
+
+      &:hover {
+        font-size: 1.55rem;
+        background-color: $shadow;
+      }
     }
   }
 
   .divider {
     width: 90%;
     height: 2px;
-    background-color: black;
+    background-color: white;
   }
+}
+
+.open {
+  right: 0;
 }

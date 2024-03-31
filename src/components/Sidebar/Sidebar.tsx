@@ -2,9 +2,13 @@ import { Link } from "react-router-dom";
 
 import classes from "./Sidebar.module.scss";
 
-export function Sidebar() {
+type Props = {
+  openMenu: boolean;
+};
+
+export function Sidebar({ openMenu }: Props) {
   return (
-    <div className={classes.sidebar}>
+    <div className={`${classes.sidebar} ${openMenu ? classes.open : ""}`}>
       <div className={classes.container}>
         <Link to="/inventory">Inventory Manager</Link>
         <Link to="/armor">Armor Tracker</Link>
@@ -13,5 +17,5 @@ export function Sidebar() {
       </div>
       <div className={classes.divider}></div>
     </div>
-  )
+  );
 }
