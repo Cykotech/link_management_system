@@ -6,6 +6,7 @@ import { useArmorsStore } from "./store/armorStore";
 
 import { LandingPage } from "./pages/Landing_Page/LandingPage";
 import { InventoryManager } from "./pages/Inventory_Manager/InventoryManager";
+import { InventoryHeader } from "./pages/Inventory_Manager/InventoryHeader";
 import { ArmorTracker } from "./pages/Armor_Tracker/ArmorTracker";
 import { ArmorTrackerHeader } from "./pages/Armor_Tracker/ArmorTrackerHeader";
 import { BatteryCalculator } from "./pages/Battery_Calculator/BatteryCalculator";
@@ -58,10 +59,10 @@ function App() {
           Currently in development. Some features may not work as intended.
         </div>
         <Routes>
-          {/* <Route
+          <Route
             path="/inventory"
-            element={<InventoryManagerHeader />}
-          /> */}
+            element={<InventoryHeader />}
+          />
           <Route
             path="/armor"
             element={

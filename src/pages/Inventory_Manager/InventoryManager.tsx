@@ -10,7 +10,6 @@ export function InventoryManager() {
 
   return (
     <div className={classes.container}>
-      <h2>Inventory Manager</h2>
       <div className={classes.grid}>
         {inventory.map((item) => {
           return (
