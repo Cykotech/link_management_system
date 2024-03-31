@@ -1,0 +1,24 @@
+@import "../../../styles/themes/totk.scss";
+
+.modal {
+  width: fit-content;
+  background-color: $shadow;
+  border: 2px solid $secondary;
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 5px 10px $accent;
+  position: fixed;
+  bottom: 25rem;
+
+  h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
