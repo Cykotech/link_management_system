@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import classes from "./armorModal.module.scss";
 
 type Props = {
@@ -14,7 +16,7 @@ export function ArmorModal({ show, handleClose }: Props) {
         <h3>How To Use</h3>
         <p>
           Start by filling in the materials in your inventory on{" "}
-          <a>Inventory Manager</a>
+          <Link to="/inventory">Inventory Manager</Link>
         </p>
         <p>
           If you have already upgraded any pieces of armor, you can set their

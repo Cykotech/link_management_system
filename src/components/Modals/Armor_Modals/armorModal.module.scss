@@ -21,4 +21,13 @@
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
+
+  a {
+    font-weight: bold;
+
+    &:hover {
+      font-size: 1.55rem;
+      text-decoration: underline;
+    }
+  }
 }
