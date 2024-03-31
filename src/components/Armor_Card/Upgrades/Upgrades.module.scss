@@ -11,13 +11,17 @@
 
   .button {
     @include button;
-    background-color: $primary;
+    background-color: transparent;
     padding: .75rem;
 
     img {
       width: .85rem;
       margin-inline: .25rem;
     }
+  }
+
+  .active {
+    background-color: $primary;
   }
 }
 
