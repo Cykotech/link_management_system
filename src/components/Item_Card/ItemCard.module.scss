@@ -24,10 +24,9 @@
     text-align: center;
     font-family: "Playfair Display";
     font-size: 1.25rem;
-    color: white;
   }
 
   :focus-visible {
-    outline: none;
+    outline: $secondary solid 2px;
   }
 }
