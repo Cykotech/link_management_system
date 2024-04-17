@@ -15,14 +15,14 @@ export function ArmorModal({ show, handleClose }: Props) {
         onClick={() => handleClose(false)}>
         <h3>How To Use</h3>
         <p>
-          Start by filling in the materials in your inventory on{" "}
-          <Link to="/inventory">Inventory Manager</Link>
+          Start by filling in the materials in your inventory on
+          <Link to="/inventory">Inventory Manager</Link>.
         </p>
         <p>
           If you have already upgraded any pieces of armor, you can set their
           levels.
         </p>
-        <p>Click upgrade to consume the materials from your inventory</p>
+        <p>Click upgrade to consume the materials from your inventory.</p>
       </div>
     )
   );

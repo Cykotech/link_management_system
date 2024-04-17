@@ -24,10 +24,10 @@
 
   a {
     font-weight: bold;
+    text-decoration: underline;
 
     &:hover {
       font-size: 1.55rem;
-      text-decoration: underline;
     }
   }
 }
