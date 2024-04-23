@@ -42,22 +42,7 @@ export async function getArmor(): Promise<TArmor[]> {
         armor.upgrades[level] = [];
 
         for (let upgradeIndex = 0; armor.upgrades[level].length < 3; upgradeIndex += 2) {
-          let upgradeItemIndex;
-
-          switch (level) {
-            case 0:
-              upgradeItemIndex = 3 + upgradeIndex;
-              break;
-            case 1:
-              upgradeItemIndex = 9 + upgradeIndex;
-              break;
-            case 2:
-              upgradeItemIndex = 15 + upgradeIndex;
-              break;
-            case 3:
-              upgradeItemIndex = 21 + upgradeIndex;
-              break;
-          }
+          let upgradeItemIndex = 3 + 6 * level + upgradeIndex;
 
           const upgradeQuantityIndex = upgradeItemIndex + 1;
 
