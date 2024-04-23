@@ -9,6 +9,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
+
+  input {
+    border: 1px solid rgb(28, 176, 107);
+    border-radius: 8px;
+    font-size: 2rem;
+    padding: .75rem .75rem .5rem;
+  }
+
+  input:focus-visible {
+    outline: 0px;
+  }
 
   .grid {
     margin: 0 auto;
