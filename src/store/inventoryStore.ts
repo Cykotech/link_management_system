@@ -1,12 +1,10 @@
 import { create } from "zustand";
 
-import { getMaterials } from "../util/getMaterials";
+import { TMaterial, getMaterials } from "../util/getMaterials";
 
 import { TUpgrade } from "../util/getArmor";
 
-type InventoryState = {
-  name: string;
-  imgSrc: string;
+interface InventoryState extends TMaterial {
   quantity: number;
 };
 
@@ -27,8 +25,7 @@ export const useInventoryStore = create<State & Actions>((set) => ({
   populateInventory: async () => {
     const materials = await getMaterials();
     const inventoryState: InventoryState[] = materials.map((material) => ({
-      name: material.name,
-      imgSrc: material.imgSrc,
+      ...material,
       quantity: 0,
     }));
 
