@@ -3,7 +3,7 @@
 html,
 body {
   height: 100%;
-  background: url("../public/Images/background.webp") no-repeat center center fixed;
+  background: url("/Images/background.webp") no-repeat center center fixed;
 }
 
 h2 {
@@ -18,7 +18,7 @@ header {
   justify-content: space-between;
   align-items: center;
   background-image: linear-gradient(to bottom, transparent, transparent),
-  url("../public/Images/background.webp");
+  url("/Images/background.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;

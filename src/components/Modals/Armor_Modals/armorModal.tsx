@@ -15,7 +15,7 @@ export function ArmorModal({ show, handleClose }: Props) {
         onClick={() => handleClose(false)}>
         <h3>How To Use</h3>
         <p>
-          Start by filling in the materials in your inventory on
+          Start by filling in the materials in your inventory on{" "}
           <Link to="/inventory">Inventory Manager</Link>.
         </p>
         <p>
