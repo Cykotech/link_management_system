@@ -3,6 +3,7 @@ import { Link, Routes, Route, useLocation } from "react-router-dom";
 
 import { useInventoryStore } from "./store/inventoryStore";
 import { useArmorsStore } from "./store/armorStore";
+import { useRecipesStore } from "./store/recipesStore";
 
 import { LandingPage } from "./pages/Landing_Page/LandingPage";
 import { InventoryManager } from "./pages/Inventory_Manager/InventoryManager";
@@ -11,6 +12,7 @@ import { ArmorTracker } from "./pages/Armor_Tracker/ArmorTracker";
 import { ArmorTrackerHeader } from "./pages/Armor_Tracker/ArmorTrackerHeader";
 import { BatteryCalculator } from "./pages/Battery_Calculator/BatteryCalculator";
 import { Cookbook } from "./pages/Cookbook/Cookbook";
+import { CookbookHeader } from "./pages/Cookbook/CookbookHeader";
 
 import { Sidebar } from "./components/Sidebar/Sidebar";
 
@@ -28,6 +30,7 @@ function App() {
   useEffect(() => {
     console.log("Loading inventory...");
     console.log("Loading armors...");
+    console.log("Loading recipes...");
 
     useInventoryStore
       .getState()
@@ -41,6 +44,13 @@ function App() {
       .populateArmor()
       .then(() => {
         console.log("Armors loaded");
+      });
+
+    useRecipesStore
+      .getState()
+      .populateRecipes()
+      .then(() => {
+        console.log("Recipes loaded");
       });
   }, []);
 
@@ -82,10 +92,10 @@ function App() {
               />
             }
           />
-          {/* <Route
+          <Route
             path="/cookbook"
             element={<CookbookHeader />}
-          /> */}
+          />
           {/* <Route
             path="/battery"
             element={<BatteryCalculatorHeader />}
@@ -129,3 +139,4 @@ function App() {
 }
 
 export default App;
+
