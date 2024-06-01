@@ -1,4 +1,4 @@
-export interface Recipe {
+export interface TRecipe {
   name: string;
   imgSrc: string;
   ingredients: Ingredients;
@@ -17,7 +17,7 @@ type Ingredients = {
   5: string;
 };
 
-export async function getRecipes(): Promise<Recipe[]> {
+export async function getRecipes(): Promise<TRecipe[]> {
   try {
     const response = await fetch(
       "https://script.google.com/macros/s/AKfycbzdeqRtseCpIPA7Jnm21VL5HuYQQX_mLBqffK55fHdt-50tU-bYECcnXMYtmRt92HQ/exec?type=recipes"
