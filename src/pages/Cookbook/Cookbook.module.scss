@@ -7,17 +7,49 @@
   padding-bottom: 1.5rem;
 }
 
+.cookbook {
+  height: var(--headerHeight);
+  display: flex;
+  flex-direction: row;
+}
+
 .ingredientContainer {
   width: 50%;
-  height: var(--headerHeight);
+  height: 100%;
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
   overflow-y: scroll;
+  padding-top: 2rem;
   padding-left: 2rem;
 
   .ingredientCard {
     @include card;
+    width: 15%;
+
+    img {
+      width: 85%;
+    }
+
+    p {
+      text-align: center;
+      font-size: 0.85rem;
+    }
+  }
+}
+
+.recipeContainer {
+  width: 50%;
+  height: 100%;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row;
+
+  .ingredientCard {
+    @include card;
+    height: 8rem;
     width: 15%;
 
     img {
