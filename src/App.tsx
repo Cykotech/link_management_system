@@ -1,24 +1,27 @@
-import { useEffect, useState } from "react";
-import { Link, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { HiOutlineMenu } from "react-icons/hi";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 
-import { useInventoryStore } from "./store/inventoryStore";
-import { useArmorsStore } from "./store/armorStore";
-import { useRecipesStore } from "./store/recipesStore";
-
-import { LandingPage } from "./pages/Landing_Page/LandingPage";
-import { InventoryManager } from "./pages/Inventory_Manager/InventoryManager";
-import { InventoryHeader } from "./pages/Inventory_Manager/InventoryHeader";
-import { ArmorTracker } from "./pages/Armor_Tracker/ArmorTracker";
-import { ArmorTrackerHeader } from "./pages/Armor_Tracker/ArmorTrackerHeader";
-import { BatteryCalculator } from "./pages/Battery_Calculator/BatteryCalculator";
-import { Cookbook } from "./pages/Cookbook/Cookbook";
-import { CookbookHeader } from "./pages/Cookbook/CookbookHeader";
+import "./App.scss";
 
 import { Sidebar } from "./components/Sidebar/Sidebar";
 
-import { HiOutlineMenu } from "react-icons/hi";
+import { ArmorTracker } from "./pages/Armor_Tracker/ArmorTracker";
+import { ArmorTrackerHeader } from "./pages/Armor_Tracker/ArmorTrackerHeader";
 
-import "./App.scss";
+import { BatteryCalculator } from "./pages/Battery_Calculator/BatteryCalculator";
+
+import { Cookbook } from "./pages/Cookbook/Cookbook";
+import { CookbookHeader } from "./pages/Cookbook/CookbookHeader";
+
+import { InventoryHeader } from "./pages/Inventory_Manager/InventoryHeader";
+import { InventoryManager } from "./pages/Inventory_Manager/InventoryManager";
+
+import { LandingPage } from "./pages/Landing_Page/LandingPage";
+
+import { useArmorsStore } from "./store/armorStore";
+import { useInventoryStore } from "./store/inventoryStore";
+import { useRecipesStore } from "./store/recipesStore";
 
 function App() {
   const { pathname } = useLocation();
@@ -26,6 +29,20 @@ function App() {
   const [obtainDisplay, setObtainDisplay] = useState(true);
   const [openMenu, setOpenMenu] = useState(false);
   const [showArmorModal, setShowArmorModal] = useState(false);
+
+  const header = useRef<HTMLElement>(null);
+  let style: React.CSSProperties;
+
+  useEffect(() => {
+    console.log(header);
+    if (header.current) {
+      console.log(header.current.offsetHeight);
+      style = {
+        "--headerHeight": `${header.current.offsetHeight}`,
+      } as React.CSSProperties;
+    }
+    console.log(style);
+  }, []);
 
   useEffect(() => {
     console.log("Loading inventory...");
@@ -60,7 +77,7 @@ function App() {
 
   return (
     <>
-      <header>
+      <header ref={header}>
         <div className="mainHeader">
           <Link to="/">
             <h1>Link Management System</h1>
@@ -125,7 +142,7 @@ function App() {
           />
           <Route
             path="/cookbook"
-            element={<Cookbook />}
+            element={<Cookbook style={style} />}
           />
           <Route
             path="/battery"

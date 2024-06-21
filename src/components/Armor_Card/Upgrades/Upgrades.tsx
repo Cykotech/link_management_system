@@ -5,8 +5,6 @@ import { useMemo, useState, useEffect } from "react";
 import { useInventoryStore } from "../../../store/inventoryStore";
 import { useArmorsStore } from "../../../store/armorStore";
 
-import { TUpgrades } from "../../../util/getArmor";
-
 import Star from "/SVG/Pause_Star.svg";
 import classes from "./Upgrades.module.scss";
 

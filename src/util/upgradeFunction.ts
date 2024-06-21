@@ -1,8 +1,5 @@
-import { ArmorState } from "../store/armorStore";
-import { TUpgrade } from "./getArmor";
-
 export function upgradeArmor(
-  armor: ArmorState,
+  armor: TArmor,
   level: number,
   inventoryStore,
   armorsStore
