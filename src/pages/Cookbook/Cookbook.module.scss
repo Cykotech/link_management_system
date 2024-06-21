@@ -1,0 +1,36 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/themes/totk.scss";
+
+.header {
+  text-align: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.ingredientContainer {
+  width: 50%;
+  height: var(--headerHeight);
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  overflow-y: scroll;
+  padding-left: 2rem;
+
+  .ingredientCard {
+    @include card;
+    width: 15%;
+
+    img {
+      width: 85%;
+    }
+
+    p {
+      text-align: center;
+      font-size: 0.85rem;
+    }
+  }
+}
+
+.ingredientContainer::-webkit-scrollbar-track {
+  border-radius: 15px;
+}
