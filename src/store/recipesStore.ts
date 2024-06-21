@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { getRecipes, TRecipe } from "../util/getRecipes";
+import { getRecipes } from "../util/getRecipes";
 
 type State = {
   recipes: TRecipe[];

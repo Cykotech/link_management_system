@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
-import { getArmor, TUpgrades } from "../util/getArmor";
+import { getArmor } from "../util/getArmor";
 
-export type ArmorState = {
+type ArmorState = {
   name: string,
   imgSrc: string,
   set: string,

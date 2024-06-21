@@ -1,25 +1,3 @@
-export type TArmor = {
-  name: string,
-  imgSrc: string,
-  set: string,
-  upgrades: TUpgrades | {},
-  isObtained: boolean,
-  isUpgradeable: boolean
-}
-
-export type TUpgrades = {
-  0: TUpgrade[],
-  1: TUpgrade[],
-  2: TUpgrade[],
-  3: TUpgrade[],
-  4: [],
-}
-
-export type TUpgrade = {
-  name: string,
-  quantity: number
-}
-
 export async function getArmor(): Promise<TArmor[]> {
   try {
     const response = await fetch(

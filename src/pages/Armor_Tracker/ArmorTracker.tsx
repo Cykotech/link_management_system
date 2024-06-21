@@ -1,7 +1,3 @@
-/* eslint-disable react/prop-types */
-
-import { useState } from "react";
-
 import { ArmorCard } from "../../components/Armor_Card/ArmorCard";
 import { ArmorModal } from "../../components/Modals/Armor_Modals/armorModal";
 

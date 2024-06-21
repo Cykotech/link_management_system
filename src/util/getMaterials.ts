@@ -1,27 +1,3 @@
-export interface TMaterial {
-  name: string,
-  imgSrc: string,
-  ingredientProperties: Properties,
-  cookingTags: Tags
-}
-
-type Properties = {
-  heartsRecovered: number,
-  cookingEffect: string,
-  effectLevel: number,
-  effectDuration: number,
-  durationBoost: number,
-  critChance: number
-}
-
-type Tags = {
-  1: string,
-  2: string,
-  3: string,
-  custom1: string,
-  custom2: string
-}
-
 export async function getMaterials(): Promise<TMaterial[]> {
   try {
     const response = await fetch(
@@ -36,6 +12,7 @@ export async function getMaterials(): Promise<TMaterial[]> {
         }
       }
     })
+    console.log(json);
     return json;
   } catch (err) {
     console.log(err);

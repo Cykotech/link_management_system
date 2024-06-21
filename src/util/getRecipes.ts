@@ -1,22 +1,3 @@
-export interface TRecipe {
-  name: string;
-  imgSrc: string;
-  ingredients: Ingredients;
-  method: string;
-  effect: string;
-  effectLevel: number;
-  effectDuration: number;
-  baseRecoveredHearts: number;
-}
-
-type Ingredients = {
-  1: string;
-  2: string;
-  3: string;
-  4: string;
-  5: string;
-};
-
 export async function getRecipes(): Promise<TRecipe[]> {
   try {
     const response = await fetch(

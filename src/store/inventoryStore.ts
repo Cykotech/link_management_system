@@ -1,8 +1,6 @@
 import { create } from "zustand";
 
-import { TMaterial, getMaterials } from "../util/getMaterials";
-
-import { TUpgrade } from "../util/getArmor";
+import { getMaterials } from "../util/getMaterials";
 
 interface InventoryState extends TMaterial {
   quantity: number;
