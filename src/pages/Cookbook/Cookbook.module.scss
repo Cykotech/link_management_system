@@ -2,13 +2,32 @@
 @import "../../styles/themes/totk.scss";
 
 .header {
-  text-align: center;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  width: 100%;
+  display: flex;
+  
+  h2 {
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .buttonContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 8%;
+
+    .button {
+      @include button;
+      margin-inline: .5rem;
+    }
+  }
+
 }
 
 .cookbook {
-  height: var(--headerHeight);
+  height: calc(100vh - var(--headerHeight));
+  max-height: 100vh;
   display: flex;
   flex-direction: row;
 }
