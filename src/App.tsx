@@ -28,7 +28,7 @@ function App() {
   const [upgradeDisplay, setUpgradeDisplay] = useState(true);
   const [obtainDisplay, setObtainDisplay] = useState(true);
   const [openMenu, setOpenMenu] = useState(false);
-  const [showArmorModal, setShowArmorModal] = useState(false);
+  const [showModal, setShowModal] = useState("none");
 
   const header = useRef<HTMLElement>(null);
   let style: React.CSSProperties;
@@ -73,6 +73,7 @@ function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setShowModal("none");
   }, [pathname]);
 
   return (
@@ -104,14 +105,19 @@ function App() {
                 obtainClick={setObtainDisplay}
                 upgradeDisplay={upgradeDisplay}
                 upgradeClick={setUpgradeDisplay}
-                showModal={showArmorModal}
-                modalClick={setShowArmorModal}
+                showModal={showModal}
+                modalClick={setShowModal}
               />
             }
           />
           <Route
             path="/cookbook"
-            element={<CookbookHeader />}
+            element={
+              <CookbookHeader
+                showModal={showModal}
+                modalClick={setShowModal}
+              />
+            }
           />
           {/* <Route
             path="/battery"
@@ -135,8 +141,8 @@ function App() {
               <ArmorTracker
                 obtainDisplay={obtainDisplay}
                 upgradeDisplay={upgradeDisplay}
-                showModal={showArmorModal}
-                modalClick={setShowArmorModal}
+                showModal={showModal}
+                modalClick={setShowModal}
               />
             }
           />

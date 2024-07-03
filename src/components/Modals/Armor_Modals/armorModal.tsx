@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import classes from "./armorModal.module.scss";
 
 type Props = {
-  show: boolean;
-  handleClose: React.Dispatch<React.SetStateAction<boolean>>;
+  showModal: string;
+  handleClose: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export function ArmorModal({ show, handleClose }: Props) {
+export function ArmorModal({ showModal, handleClose }: Props) {
   return (
-    show && (
+    showModal === "armor" && (
       <div
         className={classes.modal}
-        onClick={() => handleClose(false)}>
+        onClick={() => handleClose("none")}>
         <h3>How To Use</h3>
         <p>
           Start by filling in the materials in your inventory on{" "}

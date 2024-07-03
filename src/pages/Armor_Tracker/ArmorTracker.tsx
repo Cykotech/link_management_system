@@ -8,8 +8,8 @@ import classes from "./ArmorTracker.module.scss";
 type Props = {
   obtainDisplay: boolean;
   upgradeDisplay: boolean;
-  showModal: boolean;
-  modalClick: React.Dispatch<React.SetStateAction<boolean>>;
+  showModal: string;
+  modalClick: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export function ArmorTracker({ obtainDisplay, upgradeDisplay, showModal, modalClick }: Props) {
@@ -31,7 +31,7 @@ export function ArmorTracker({ obtainDisplay, upgradeDisplay, showModal, modalCl
           );
         })}
       </div>
-      <ArmorModal show={showModal} handleClose={modalClick}></ArmorModal>
+      <ArmorModal showModal={showModal} handleClose={modalClick}></ArmorModal>
     </div>
   );
 }

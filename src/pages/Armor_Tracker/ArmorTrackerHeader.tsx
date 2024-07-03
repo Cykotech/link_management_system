@@ -5,8 +5,8 @@ type Props = {
   upgradeClick: React.Dispatch<React.SetStateAction<boolean>>;
   obtainDisplay: boolean;
   obtainClick: React.Dispatch<React.SetStateAction<boolean>>;
-  showModal: boolean;
-  modalClick: React.Dispatch<React.SetStateAction<boolean>>;
+  showModal: string;
+  modalClick: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export function ArmorTrackerHeader({
@@ -23,7 +23,9 @@ export function ArmorTrackerHeader({
       <div className={classes.buttonContainer}>
         <button
           className={classes.button}
-          onClick={() => modalClick(!showModal)}>
+          onClick={() => {
+            showModal === "none" ? modalClick("armor") : modalClick("none");
+          }}>
           How To Use
         </button>
         <div className={classes.dropdown}>
