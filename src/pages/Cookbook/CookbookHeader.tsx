@@ -12,8 +12,20 @@ export function CookbookHeader({ showModal, modalClick }: Props) {
     <div className={classes.header}>
       <h2>Cookbook</h2>
       <div className={classes.buttonContainer}>
-        <button className={classes.button}>How To Use</button>
-        <button className={classes.button}>Show All Recipes</button>
+        <button
+          className={classes.button}
+          onClick={() =>
+            showModal === "none" ? modalClick("recipe") : modalClick("none")
+          }>
+          How To Use
+        </button>
+        <button
+          className={classes.button}
+          onClick={() =>
+            showModal === "none" ? modalClick("allRecipes") : modalClick("none")
+          }>
+          Show All Recipes
+        </button>
         <button
           className={classes.button}
           onClick={() => resetIngredients()}>

@@ -34,9 +34,7 @@ function App() {
   let style: React.CSSProperties;
 
   useEffect(() => {
-    console.log(header);
     if (header.current) {
-      console.log(header.current.offsetHeight);
       style = {
         "--headerHeight": `${header.current.offsetHeight}`,
       } as React.CSSProperties;
@@ -148,7 +146,13 @@ function App() {
           />
           <Route
             path="/cookbook"
-            element={<Cookbook style={style} />}
+            element={
+              <Cookbook
+                style={style}
+                showModal={showModal}
+                modalClick={setShowModal}
+              />
+            }
           />
           <Route
             path="/battery"

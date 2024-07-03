@@ -1,14 +1,18 @@
 import React from "react";
 import { useInventoryStore } from "../../store/inventoryStore";
 import { useRecipesStore } from "../../store/recipesStore";
+import { RecipeModal } from "../../components/Modals/Recipe_Modals/recipeModal";
+import { AllRecipesModal } from "../../components/Modals/Recipe_Modals/allRecipesModal";
 
 import classes from "./Cookbook.module.scss";
 
 interface Props {
   style?: React.CSSProperties;
+  showModal: string;
+  modalClick: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export function Cookbook({ style }: Props) {
+export function Cookbook({ style, showModal, modalClick }: Props) {
   const { inventory } = useInventoryStore();
   const recipesStore = useRecipesStore();
   const { activeIngredients, addIngredient } = useRecipesStore(
@@ -29,6 +33,7 @@ export function Cookbook({ style }: Props) {
               }}>
               <img src={ingredient.imgSrc} />
               <p>{ingredient.name}</p>
+              {/* <p>{ingredient.quantity}</p> */}
             </div>
           );
         })}
@@ -42,6 +47,8 @@ export function Cookbook({ style }: Props) {
           )
         })}
       </div>
+      <RecipeModal showModal={showModal} handleClose={modalClick}></RecipeModal>
+      <AllRecipesModal showModal={showModal} handleClose={modalClick}></AllRecipesModal>
     </div>
   );
 }
