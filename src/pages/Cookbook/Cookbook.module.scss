@@ -4,7 +4,7 @@
 .header {
   width: 100%;
   display: flex;
-  
+
   h2 {
     text-align: center;
     margin: 0 auto;
@@ -19,10 +19,9 @@
 
     .button {
       @include button;
-      margin-inline: .5rem;
+      margin-inline: 0.5rem;
     }
   }
-
 }
 
 .cookbook {
@@ -64,22 +63,40 @@
   padding-top: 2rem;
   padding-right: 2rem;
   display: flex;
-  justify-content: space-evenly;
-  flex-flow: row;
+  flex-direction: column;
+  align-items: center;
 
-  .ingredientCard {
+  .activeContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row;
+
+    .ingredientCard {
+      @include card;
+      height: 8rem;
+      width: 15%;
+
+      img {
+        width: 85%;
+      }
+
+      p {
+        text-align: center;
+        font-size: 0.85rem;
+      }
+    }
+  }
+  .recipeCard {
     @include card;
-    height: 8rem;
-    width: 15%;
+    width: fit-content;
+    margin-top: 2rem;
+  }
 
-    img {
-      width: 85%;
-    }
-
-    p {
-      text-align: center;
-      font-size: 0.85rem;
-    }
+  .button {
+    @include button;
+    margin-top: 2rem;
+    font-size: 2.5rem;
   }
 }
 
