@@ -13,7 +13,7 @@ type State = {
 type Actions = {
   populateInventory: () => Promise<void>;
   setQuantity: (material: string, quantity: number, state: State) => void;
-  consumeMaterials: (materialsToConsume: TUpgrade[], state: State) => void;
+  consumeMaterials: (materialsToConsume: TMaterial[], state: State) => void;
 };
 
 const initialState: InventoryState[] = [];
@@ -45,7 +45,7 @@ export const useInventoryStore = create<State & Actions>((set) => ({
       inventory: [...state.inventory],
     }));
   },
-  consumeMaterials: (materialsToConsume: TUpgrade[], state: State) => {
+  consumeMaterials: (materialsToConsume: TMaterial[], state: State) => {
     materialsToConsume.forEach((material) => {
       const materialIndex: number = state.inventory.findIndex(
         (item) => item.name === material.name

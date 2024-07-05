@@ -1,7 +1,7 @@
 interface TRecipe {
   name: string;
   imgSrc: string;
-  ingredients: Ingredients;
+  ingredients: string[];
   method: string;
   effect: string;
   effectLevel: number;
@@ -9,19 +9,12 @@ interface TRecipe {
   baseRecoveredHearts: number;
 }
 
-interface Ingredients {
-  1: string;
-  2: string;
-  3: string;
-  4: string;
-  5: string;
-};
-
 interface TMaterial {
   name: string,
   imgSrc: string,
   ingredientProperties: Properties,
-  cookingTags: Tags
+  cookingTags: Tags,
+  quantity: number
 }
 
 interface Properties {
@@ -51,14 +44,9 @@ interface TArmor {
 }
 
 interface TUpgrades {
-  0: TUpgrade[],
-  1: TUpgrade[],
-  2: TUpgrade[],
-  3: TUpgrade[],
+  0: TMaterial[],
+  1: TMaterial[],
+  2: TMaterial[],
+  3: TMaterial[],
   4: [],
-}
-
-interface TUpgrade {
-  name: string,
-  quantity: number
 }
