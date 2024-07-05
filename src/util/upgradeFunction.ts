@@ -4,7 +4,7 @@ export function upgradeArmor(
   inventoryStore,
   armorsStore
 ) {
-  const upgradesToNextLevel: TUpgrade[] = armor.upgrades[level];
+  const upgradesToNextLevel: TMaterial[] = armor.upgrades[level];
 
   const sufficientMaterialCheck = (): boolean => {
     for (let i = 0; i < upgradesToNextLevel.length; i++) {

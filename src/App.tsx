@@ -39,7 +39,6 @@ function App() {
         "--headerHeight": `${header.current.offsetHeight}`,
       } as React.CSSProperties;
     }
-    console.log(style);
   }, []);
 
   useEffect(() => {
