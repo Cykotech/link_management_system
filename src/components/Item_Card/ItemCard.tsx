@@ -21,7 +21,7 @@ export function ItemCard({ children, imgSrc, quantity }: Props) {
         id="material-quantity"
         min="0"
         max="999"
-        value={quantity ?? 0}
+        value={quantity.toString()}
         onChange={(event) => {
           inventory.setQuantity(children, Number(event.target.value), inventory);
         }}></input>
