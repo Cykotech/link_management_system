@@ -5,16 +5,15 @@ type Props = {
   showModal: string;
   handleClick: React.Dispatch<React.SetStateAction<string>>;
   handleClose: React.Dispatch<React.SetStateAction<string>>;
-  handleInfoModal: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export function AllRecipesModal({
   showModal,
   handleClick,
   handleClose,
-  handleInfoModal,
 }: Props) {
   const { recipes } = useRecipesStore();
+
   return (
     showModal === "allRecipes" && (
       <div className={`${classes.all} ${classes.modal}`}>
@@ -29,8 +28,7 @@ export function AllRecipesModal({
                 className={classes.card}
                 key={`${recipe.name}-${i}`}
                 onClick={() => {
-                  handleInfoModal(recipe.name);
-                  handleClick("recipeInfo");
+                  handleClick(`recipeInfo-${recipe.name}`)
                 }}>
                 <img
                   src={recipe.imgSrc}
