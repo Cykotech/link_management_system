@@ -30,6 +30,8 @@ function App() {
   const [openMenu, setOpenMenu] = useState(false);
   const [showModal, setShowModal] = useState("none");
 
+  const { resetIngredients } = useRecipesStore();
+
   const header = useRef<HTMLElement>(null);
   let style: React.CSSProperties;
 
@@ -70,6 +72,7 @@ function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    resetIngredients();
     setShowModal("none");
   }, [pathname]);
 
