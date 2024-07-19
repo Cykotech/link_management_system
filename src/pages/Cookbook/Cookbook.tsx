@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import { useInventoryStore } from "../../store/inventoryStore";
 import { useRecipesStore } from "../../store/recipesStore";
 import { RecipeModal } from "../../components/Modals/Recipe_Modals/recipeModal";
@@ -14,13 +14,11 @@ interface Props {
 }
 
 export function Cookbook({ style, showModal, modalClick }: Props) {
-  const { inventory, consumeMaterials } = useInventoryStore();
   const inventoryStore = useInventoryStore();
   const recipesStore = useRecipesStore();
+  const { inventory, consumeMaterials } = useInventoryStore();
   const { activeIngredients, addIngredient, recipes, resetIngredients } =
     useRecipesStore((state) => state);
-
-  const [recipeInfo, setRecipeInfo] = useState("");
 
   function cookRecipe() {
     consumeMaterials(activeIngredients, inventoryStore);
@@ -38,7 +36,20 @@ export function Cookbook({ style, showModal, modalClick }: Props) {
         </div>
         <button
           className={classes.button}
-          onClick={() => cookRecipe()}>
+          onClick={() => {
+            for (let i = 0; i < activeIngredients.length; i++) {
+              const ingredientIndex = inventory.indexOf(activeIngredients[i]);
+
+              if (inventory[ingredientIndex].quantity === 0) {
+                alert(`You don't have any ${inventory[ingredientIndex].name}`);
+                return;
+              }
+
+              if (i === activeIngredients.length - 1) {
+                cookRecipe();
+              }
+            }
+          }}>
           Cook
         </button>
       </>
@@ -84,12 +95,10 @@ export function Cookbook({ style, showModal, modalClick }: Props) {
         handleClose={modalClick}></RecipeModal>
       <AllRecipesModal
         showModal={showModal}
-        handleInfoModal={setRecipeInfo}
         handleClick={modalClick}
         handleClose={modalClick}></AllRecipesModal>
       <RecipeInfoModal
         showModal={showModal}
-        showInfo={recipeInfo}
         handleClick={modalClick}
         handleClose={modalClick}></RecipeInfoModal>
     </div>
