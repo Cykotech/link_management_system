@@ -1,11 +1,8 @@
-import { useRecipesStore } from "../store/recipesStore";
-
 export function findRecipe(
   recipeName: string,
+  recipes: TRecipe[],
   ingredients?: TMaterial[]
 ): TRecipe {
-  const { recipes } = useRecipesStore();
-
   let recipeToFind = recipeName;
 
   if (ingredients) {
