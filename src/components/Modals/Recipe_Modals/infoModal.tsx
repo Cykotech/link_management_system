@@ -15,14 +15,16 @@ export function RecipeInfoModal({
   handleClose,
 }: Props) {
   const { recipes } = useRecipesStore();
-  const [recipeInfo, SetRecipeInfo] = useState<TRecipe>();
+  const initialRecipe: TRecipe = recipes[0];
+  const [recipeInfo, SetRecipeInfo] = useState<TRecipe>(initialRecipe);
 
   useEffect(() => {
-    console.log(showModal);
+    console.log(recipeInfo);
     if (showModal.includes("recipeInfo")) {
       const recipeToFind = showModal.substring(11);
-      console.log(recipeToFind);
       SetRecipeInfo(findRecipe(recipeToFind, recipes));
+    } else {
+      SetRecipeInfo(initialRecipe);
     }
   }, [showModal, recipeInfo]);
 
@@ -47,7 +49,7 @@ export function RecipeInfoModal({
           />
           <div className={classes.infoContainer}>
             {recipeInfo.ingredients.map((ingredient, index) => {
-              return <p key={index}>{ingredient}</p>;
+              return <p key={`${ingredient}-${index}`}>{ingredient}</p>;
             })}
           </div>
         </div>
