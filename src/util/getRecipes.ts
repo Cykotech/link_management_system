@@ -8,7 +8,11 @@ export async function getRecipes(): Promise<TRecipe[]> {
       recipe.effectLevel = Number(json.effectLevel) || 0;
       recipe.effectDuration = Number(json.effectDuration) || 0;
       recipe.baseRecoveredHearts = Number(json.baseRecoveredHearts) || 0;
+      recipe.ingredients = recipe.ingredients.filter(
+        (ingredient) => ingredient !== ""
+      );
     });
+    console.log(json);
     return json;
   } catch (err) {
     console.log(err);
