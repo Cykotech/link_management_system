@@ -12,7 +12,6 @@ export async function getMaterials(): Promise<TMaterial[]> {
         }
       }
     })
-    console.log(json);
     return json;
   } catch (err) {
     console.log(err);
