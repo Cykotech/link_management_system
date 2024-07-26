@@ -12,7 +12,6 @@ export async function getRecipes(): Promise<TRecipe[]> {
         (ingredient) => ingredient !== ""
       );
     });
-    console.log(json);
     return json;
   } catch (err) {
     console.log(err);
