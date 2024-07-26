@@ -14,7 +14,8 @@ interface TMaterial {
   imgSrc: string,
   ingredientProperties: Properties,
   cookingTags: Tags,
-  quantity: number
+  quantity: number,
+  id: number
 }
 
 interface Properties {
