@@ -10,7 +10,7 @@
   }
 
   &.info {
-    width: 50%;
+    width: 40%;
   }
 
   .textContainer {
@@ -53,6 +53,16 @@
         font-size: 1rem;
         text-align: center;
       }
+    }
+  }
+
+  .recipeContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .infoContainer {
+      width: 40%;
     }
   }
 }

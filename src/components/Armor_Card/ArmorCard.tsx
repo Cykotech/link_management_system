@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/prop-types */
 // import { useEffect } from "react";
 
 import { Upgrades } from "./Upgrades/Upgrades";
@@ -65,14 +63,21 @@ export function ArmorCard({
       <h3>{children}</h3>
       {canBeUpgraded()}
       <div className={classes.buttonContainer}>
-        {armor.isUpgradeable ? <button onClick={() => {
-            upgradeArmor(
-              armor,
-              armor.currentLevel,
-              inventoryStore,
-              armorsStore
-            );
-          }}>Upgrade</button> : ""}
+        {armor.isUpgradeable ? (
+          <button
+            onClick={() => {
+              upgradeArmor(
+                armor,
+                armor.currentLevel,
+                inventoryStore,
+                armorsStore
+              );
+            }}>
+            Upgrade
+          </button>
+        ) : (
+          ""
+        )}
         <button onClick={() => obtainArmor(armor.name, armorsStore)}>
           {!armors[armorIndex].isObtained ? "Obtain Armor" : "Unobtain Armor"}
         </button>

@@ -19,7 +19,6 @@ export function RecipeInfoModal({
   const [recipeInfo, SetRecipeInfo] = useState<TRecipe>(initialRecipe);
 
   useEffect(() => {
-    console.log(recipeInfo);
     if (showModal.includes("recipeInfo")) {
       const recipeToFind = showModal.substring(11);
       SetRecipeInfo(findRecipe(recipeToFind, recipes));
