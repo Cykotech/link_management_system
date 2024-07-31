@@ -1,5 +1,5 @@
 import { create } from "zustand";
-
+import { findRecipe } from "../util/findRecipe";
 import { getRecipes } from "../util/getRecipes";
 
 type State = {
@@ -11,7 +11,8 @@ type State = {
 type Actions = {
   populateRecipes: () => Promise<void>;
   addIngredient: (ingredient: TMaterial, state: State) => void;
-  setActiveRecipe: () => void;
+  setActiveRecipe: (state: State) => void;
+  removeIngredient: (index: number, state: State) => void;
   resetIngredients: () => void;
 };
 
@@ -38,8 +39,23 @@ export const useRecipesStore = create<State & Actions>((set) => ({
       activeIngredients: [...state.activeIngredients, ingredient],
     }));
   },
-  setActiveRecipe: () => {
+  setActiveRecipe: (state) => {
+    const recipeToSet = findRecipe("", state.recipes, state.activeIngredients);
 
+    recipeToSet
+      ? set(() => ({
+          activeRecipe: recipeToSet,
+        }))
+      : set(() => ({
+          activeRecipe: state.recipes[144],
+        }));
+  },
+  removeIngredient: (index, state) => {
+    const newIngredients = state.activeIngredients.toSpliced(index, 1);
+
+    set(() => ({
+      activeIngredients: [...newIngredients],
+    }));
   },
   resetIngredients: () => {
     set(() => ({
