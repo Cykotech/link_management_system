@@ -7,6 +7,7 @@ interface TRecipe {
   effectLevel: number;
   effectDuration: number;
   baseRecoveredHearts: number;
+  priority: number;
 }
 
 interface TMaterial {
