@@ -82,6 +82,7 @@ export function Cookbook({ style, showModal, modalClick }: Props) {
             return (
               <div
                 className={classes.ingredientCard}
+                onClick={() => removeIngredient(i, recipesStore)}
                 key={i}>
                 <img src={ingredient.imgSrc} />
               </div>
