@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { useInventoryStore } from "../../store/inventoryStore";
 import { useRecipesStore } from "../../store/recipesStore";
 import { RecipeModal } from "../../components/Modals/Recipe_Modals/recipeModal";
@@ -17,8 +17,18 @@ export function Cookbook({ style, showModal, modalClick }: Props) {
   const inventoryStore = useInventoryStore();
   const recipesStore = useRecipesStore();
   const { inventory, consumeMaterials } = useInventoryStore();
-  const { activeIngredients, addIngredient, recipes, resetIngredients } =
-    useRecipesStore((state) => state);
+  const {
+    activeIngredients,
+    activeRecipe,
+    addIngredient,
+    removeIngredient,
+    setActiveRecipe,
+    resetIngredients,
+  } = useRecipesStore((state) => state);
+
+  useEffect(() => {
+    setActiveRecipe(recipesStore);
+  }, [activeIngredients]);
 
   function cookRecipe() {
     consumeMaterials(activeIngredients, inventoryStore);
@@ -27,32 +37,37 @@ export function Cookbook({ style, showModal, modalClick }: Props) {
 
   function renderActiveRecipe(): ReactNode {
     return (
-      <>
-        <div className={classes.recipeCard}>
-          <img
-            src={recipes[144].imgSrc}
-            alt={recipes[144].imgSrc}
-          />
-        </div>
-        <button
-          className={classes.button}
-          onClick={() => {
-            for (let i = 0; i < activeIngredients.length; i++) {
-              const ingredientIndex = inventory.indexOf(activeIngredients[i]);
+      activeRecipe && (
+        <>
+          <div className={classes.recipeCard}>
+            <img
+              src={activeRecipe?.imgSrc}
+              alt={activeRecipe?.name}
+            />
+            {activeRecipe?.name}
+          </div>
+          <button
+            className={classes.button}
+            onClick={() => {
+              for (let i = 0; i < activeIngredients.length; i++) {
+                const ingredientIndex = inventory.indexOf(activeIngredients[i]);
 
-              if (inventory[ingredientIndex].quantity === 0) {
-                alert(`You don't have any ${inventory[ingredientIndex].name}`);
-                return;
-              }
+                if (inventory[ingredientIndex].quantity === 0) {
+                  alert(
+                    `You don't have any ${inventory[ingredientIndex].name}`
+                  );
+                  return;
+                }
 
-              if (i === activeIngredients.length - 1) {
-                cookRecipe();
+                if (i === activeIngredients.length - 1) {
+                  cookRecipe();
+                }
               }
-            }
-          }}>
-          Cook
-        </button>
-      </>
+            }}>
+            Cook
+          </button>
+        </>
+      )
     );
   }
 
