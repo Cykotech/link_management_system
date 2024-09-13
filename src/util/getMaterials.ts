@@ -1,7 +1,7 @@
 export async function getMaterials(): Promise<TMaterial[]> {
   try {
     const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbxjYKCnx2VRAj7aphprnj6BMS36MQBEF9KSS8hBRJ8jqoAVhhQnZkEZLl5GRU304Z0/exec?type=materials"
+      "https://script.google.com/macros/s/AKfycbxdwFZR3NKwIeV1V9g3Ei0AkU7uj7_exUdni94HTQ7PK1flIQgin2EBl7UhYDKYugw/exec?type=materials"
     );
     const json = await response.json();
     json.forEach((material) => {
