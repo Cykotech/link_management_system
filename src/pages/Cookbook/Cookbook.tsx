@@ -8,12 +8,11 @@ import { RecipeInfoModal } from "../../components/Modals/Recipe_Modals/infoModal
 import classes from "./Cookbook.module.scss";
 
 interface Props {
-  style?: React.CSSProperties;
   showModal: string;
   modalClick: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export function Cookbook({ style, showModal, modalClick }: Props) {
+export function Cookbook({ showModal, modalClick }: Props) {
   const inventoryStore = useInventoryStore();
   const recipesStore = useRecipesStore();
   const { inventory, consumeMaterials } = useInventoryStore();
@@ -72,9 +71,7 @@ export function Cookbook({ style, showModal, modalClick }: Props) {
   }
 
   return (
-    <div
-      className={classes.cookbook}
-      style={style}>
+    <div className={classes.cookbook}>
       <div className={classes.ingredientContainer}>
         {inventory.map((ingredient, i) => {
           return (

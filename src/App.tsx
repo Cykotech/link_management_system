@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { HiOutlineMenu } from "react-icons/hi";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
 
@@ -31,17 +31,6 @@ function App() {
   const [showModal, setShowModal] = useState("none");
 
   const { resetIngredients } = useRecipesStore();
-
-  const header = useRef<HTMLElement>(null);
-  let style: React.CSSProperties;
-
-  useEffect(() => {
-    if (header.current) {
-      style = {
-        "--headerHeight": `${header.current.offsetHeight}`,
-      } as React.CSSProperties;
-    }
-  }, []);
 
   useEffect(() => {
     console.log("Loading inventory...");
@@ -78,7 +67,7 @@ function App() {
 
   return (
     <>
-      <header ref={header}>
+      <header>
         <div className="mainHeader">
           <Link to="/">
             <h1>Link Management System</h1>
@@ -150,7 +139,6 @@ function App() {
             path="/cookbook"
             element={
               <Cookbook
-                style={style}
                 showModal={showModal}
                 modalClick={setShowModal}
               />
