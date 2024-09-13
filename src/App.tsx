@@ -10,6 +10,7 @@ import { ArmorTracker } from "./pages/Armor_Tracker/ArmorTracker";
 import { ArmorTrackerHeader } from "./pages/Armor_Tracker/ArmorTrackerHeader";
 
 import { BatteryCalculator } from "./pages/Battery_Calculator/BatteryCalculator";
+import { BatteryCalculatorHeader } from "./pages/Battery_Calculator/BatteryCalculatorHeader";
 
 import { Cookbook } from "./pages/Cookbook/Cookbook";
 import { CookbookHeader } from "./pages/Cookbook/CookbookHeader";
@@ -108,10 +109,10 @@ function App() {
               />
             }
           />
-          {/* <Route
+          <Route
             path="/battery"
             element={<BatteryCalculatorHeader />}
-          /> */}
+          />
         </Routes>
       </header>
       <main>
